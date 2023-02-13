@@ -4,13 +4,31 @@ const express = require('express');
 
 const logger = require('morgan');
 const createError = require('http-errors');
-const app = express();
+const passport = require('passport');
+
+
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false })); // para que el body de las peticiones se pueda leer
 
+//DB conection
 require('./config/db.config');
+
+//handlebars config
 require('./config/hbs.config');
+
+// Passport config.
+require('./config/passport.config');
+
+const app = express();
+
+/* Session middlewares */
+const { sessionConfig } = require('./config/session.config');
+app.use(sessionConfig);
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs')

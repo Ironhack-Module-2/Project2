@@ -42,3 +42,13 @@ module.exports.doSignup = (req, res, next) => {
         }
       })
 };
+
+
+ 
+module.exports.login = (req, res, next) => {
+  res.render('auth/login');
+}
+
+module.exports.doLogin =(req, res, next) => {
+  res.redirect('/login');
+}
