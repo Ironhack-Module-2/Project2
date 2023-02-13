@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User.model');
 
-passport.serializezUser((user, next) => {
+passport.serializeUser((user, next) => {
     next(null, user.id)
 })
 
@@ -37,4 +37,6 @@ passport.use('local-auth', new LocalStrategy({
         }
     })
     .catch(err => next(err))
-}))
+})) 
+
+module.exports.GENERIC_ERROR_MESSAGE = GENERIC_ERROR_MESSAGE;

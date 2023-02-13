@@ -28,8 +28,13 @@ const userSchema = new mongoose.Schema (
         },
         role: {
             type: String,
+            required: [true, 'role is required'],
+            validate: {
+              validator: (role) => ROLES.includes(role),
+              message: "Role is required"
+            },
             enum: ROLES,
-            required: true,
+         
         }
     }
 );
@@ -47,6 +52,10 @@ userSchema.pre('save', function(next) {
       next();
     }
   });
+
+  userSchema.methods.checkPassword = function(passwordToCompare) {
+    return bcrypt.compare(passwordToCompare, this.password);
+  }
 
 const User = mongoose.model('User', userSchema);
 

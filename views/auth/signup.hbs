@@ -3,28 +3,33 @@
 <form action="/signup" method="POST">
   <div class="mb-3">
     <label for="firstName" class="form-label">Name</label>
-    <input class="form-control" id="firstName" name="firstName" value:"{{user.firstName}}">
+    <input class="form-control {{#if errors.firstName}}is-invalid{{/if}}" id="firstName" name="firstName" value:"{{user.firstName}}">
+    {{errors.firstName}}
   </div>
   <div class="mb-3">
     <label for="lastName" class="form-label">Last Name</label>
-    <input class="form-control" id="lastName" name="lastName" value:"{{user.lastName}}">
+    <input class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName" name="lastName" value:"{{user.lastName}}">
+    {{errors.lastName}}
   </div>    
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" value="{{user.email}}" name="email">
+    <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" aria-describedby="emailHelp" value="{{user.email}}" name="email">
     <div id="emailHelp" class="form-text"></div>
+    {{errors.email}}
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" value:"{{user.password}}" name="password">
+    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" value:"{{user.password}}" name="password">
+    {{errors.password}}
   </div>
   <div class="mb-3">
     <label for="role" class="form-label">Role</label>
-    <select class="form-select" aria-label="Default select role" name="role">
+    <select class="form-select {{#if errors.role}}is-invalid{{/if}}" aria-label="Default select role" name="role">
         <option selected>select a role</option>
         <option value="hunter">Hunter</option>
         <option value="artist">Artist</option>
     </select>
+    {{errors.role}}
   </div>
   
   

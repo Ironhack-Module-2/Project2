@@ -6,7 +6,7 @@ const logger = require('morgan');
 const createError = require('http-errors');
 const passport = require('passport');
 
-
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false })); // para que el body de las peticiones se pueda leer
@@ -20,14 +20,13 @@ require('./config/hbs.config');
 // Passport config.
 require('./config/passport.config');
 
-const app = express();
 
 /* Session middlewares */
 const { sessionConfig } = require('./config/session.config');
 app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
-
+ 
 
 
 app.set('views', __dirname + '/views');
