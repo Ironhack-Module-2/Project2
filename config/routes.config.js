@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
+const roleController = require('../controllers/role.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
+const roleMiddleware = require('../middlewares/role.middleware');
 
 
 router.get('/', (req, res, next) => res.render('home'))
@@ -13,8 +15,6 @@ router.post('/login', authMiddleware.isNotAuthenticated, authController.doLogin)
 
 //router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout);
 
-router.get('/home', authController.home)
-
-
+router.get('/home', authMiddleware.isAuthenticated, roleController.home)
 
 module.exports = router;
