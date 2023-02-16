@@ -14,7 +14,7 @@ router.post('/signup', authMiddleware.isNotAuthenticated, authController.doSignu
 router.get('/login', authMiddleware.isNotAuthenticated, authController.login);
 router.post('/login', authMiddleware.isNotAuthenticated, authController.doLogin);
 
-//router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout);
+router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout);
 
 router.get('/home', authMiddleware.isAuthenticated, roleController.home);
 
