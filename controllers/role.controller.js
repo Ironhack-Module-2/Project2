@@ -13,13 +13,15 @@ module.exports.home = (req, res, next) => {
     res.render('home')
 }; */
 
-module.exports.profile = (req, res, next) => {
-  if (req.user.role === "artist") {
-    res.render("home/profile-set");
-  } else {
-    res.render("home/home-hunter");
-  }
-};
+
+
+module.exports.artist= (req, res, next) => {
+    if (req.user.role === 'artist') {
+        res.render('home/profile-set')
+    } else {
+        res.render('home/home-hunter')
+    }
+
 
 module.exports.homeArtist = (req, res, next) => {
   Job.find()
@@ -27,4 +29,5 @@ module.exports.homeArtist = (req, res, next) => {
       res.render("home/home-artist", { jobs });
     })
     .catch((err) => next(err));
+
 };
