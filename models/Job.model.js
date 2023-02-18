@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 
  const jobSchema = new mongoose.Schema (
      {
+        filmName: {
+            type: String,
+            required: [true, "Film's name is required"],
+        },
          description: {
              type: String,
              required: [true, 'Description is required'],
@@ -22,6 +26,10 @@ const mongoose = require('mongoose');
              },
              enum: HEIGHT
          },
+        companyName: {
+            type: String, 
+            required: [true, "Company's name is required"]
+        },
      }
  );
 
