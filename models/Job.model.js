@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 
  const jobSchema = new mongoose.Schema (
      {
-         description: {
+        title: {
+             type: String,
+             required: [true, 'title is required'],
+         },
+        description: {
              type: String,
              required: [true, 'Description is required'],
              maxLength: [400, 'Description must have max 400 characters']
@@ -22,8 +26,21 @@ const mongoose = require('mongoose');
              },
              enum: HEIGHT
          },
+         owner: {
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
+            required: [true, 'A tweet must have an owner']
+          },
      }
  );
+
+
+/*  jobSchema.virtual('application', {
+    ref: 'Application',
+    foreignField: 'job',
+    localField: '_id',
+    justOne: false
+  }) */
 
  const Job = mongoose.model('Job', jobSchema);
 

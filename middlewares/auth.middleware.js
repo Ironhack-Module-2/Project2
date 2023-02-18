@@ -1,7 +1,6 @@
 module.exports.isAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
       next()
-      console.log('entro en next de autenticated')
     } else {
       res.redirect('/login')
     }

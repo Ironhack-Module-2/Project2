@@ -41,7 +41,7 @@ app.use('/', router);
 
 /* Errors middlewares */
 
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
     next(createError(404, 'Resource not found'));
   });
   
@@ -53,7 +53,7 @@ app.use('/', router);
       message: error.message,
       error: req.app.get('env') === 'development' ? error : {}
     })
-  }) */
+  })
 
 
 const PORT = process.env.PORT || 3000

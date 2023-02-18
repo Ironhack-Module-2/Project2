@@ -2,7 +2,9 @@ const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const roleController = require('../controllers/role.controller');
 const createController = require('../controllers/create.controller');
+const appController = require('../controllers/application.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
+
 //const roleMiddleware = require('../middlewares/role.middleware');
 
 
@@ -21,6 +23,6 @@ router.get('/home', authMiddleware.isAuthenticated, roleController.home);
 router.get('/create', authMiddleware.isAuthenticated, createController.create);
 router.post('/create', authMiddleware.isAuthenticated, createController.doCreate);
 
-
+router.post('/jobs/:id/application', authMiddleware.isAuthenticated, appController.createApp);
 
 module.exports = router;

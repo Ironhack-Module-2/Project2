@@ -1,13 +1,20 @@
 <h1>Hunter's Home</h1>
 
-{{!-- Aquí va un if no hay jobs  --}}
-<h3>You have no jobs posted yet</h3>
+{{!-- Aquí va un if/else sí hay jobs  --}}
 
-<a class="link" href="/create" method="GET" action="/create" >Create a job</a>
+<section class="border border-bottom-0 border-top-0 w-100 p-4">
+    <h1 class="text-primary">Your Jobs</h1>
+    {{#each jobs as |job|}}
+      {{> jobcard job=job currentUser=../currentUser}}
+      <form method="POST" action="/jobs/{{job.id}}/application" >
+        <button class="link">Apply</button> {{! helper para que cambie a "applied"? }}
+      </form>
+    
+    {{else}}
+      <div>
+        <h3>You have no jobs posted yet</h3>
 
-<div>
-    <h2>{{job.description}}</h2>
-    <p>{{job.age}}</p>
-    <p>{{job.height}}</p>
-</div>
-
+      </div>
+    {{/each}}
+    <a class="link" href="/create" method="GET" action="/create" >Create a job</a>
+  </section>
