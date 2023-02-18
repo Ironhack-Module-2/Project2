@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
  const jobSchema = new mongoose.Schema (
      {
+
         title: {
              type: String,
              required: [true, 'title is required'],
@@ -26,11 +27,18 @@ const mongoose = require('mongoose');
              },
              enum: HEIGHT
          },
+         
+         companyName: {
+            type: String, 
+            required: [true, "Company's name is required"]
+        },
+
          owner: {
             type: mongoose.Types.ObjectId,
             ref: 'User',
             required: [true, 'A tweet must have an owner']
           },
+
      }
  );
 

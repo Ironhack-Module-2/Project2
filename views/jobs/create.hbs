@@ -5,8 +5,7 @@
     <label for="title" class="form-label">Job title</label>
     <input
       typeof="text" class="form-control form-control" id="title"
-      name="title" value="{{job.title}}" required
-    >
+      name="title" value="{{job.title}}" required >
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>
@@ -15,6 +14,10 @@
       name="description" value="{{job.description}}" required
     >
   </div>
+    <div class="col-md-6">
+        <label for="" class="form-label">Company's Name</label>
+        <input type="age" class="form-control" id="companyName"  name="companyName" value="{{job.companyName}}" required>
+    </div>
   <div class="col-md-6">
         <label for="" class="form-label">Age</label>
         <input type="age" class="form-control" id="age"  name="age" value="{{job.age}}" required>
@@ -27,6 +30,6 @@
             <option value='1.61 - 1.80'>1.61 - 1.80</option>
             <option value='+1.80'>+1.80</option>
         </select>
-    </div>   
+   </div>  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

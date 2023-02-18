@@ -39,6 +39,9 @@ app.set('view engine', 'hbs')
 const router = require('./config/routes.config');
 app.use('/', router);
 
+/** Configure static files */
+app.use(express.static("public"))
+
 /* Errors middlewares */
 
 app.use((req, res, next) => {
