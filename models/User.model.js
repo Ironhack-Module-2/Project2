@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
 const SALT_ROUNDS = 10;
 const ROLES = ['hunter', 'artist'];
+const HEIGHT = ['1.40 - 1.60', '1.61 - 1.80', '+1.80'];
 const EMAIL_PATTERN =
    /^(([^<>()[\]\\.,;:\s@“]+(\.[^<>()[\]\\.,;:\s@“]+)*)|(“.+“))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -35,7 +37,24 @@ const userSchema = new mongoose.Schema (
             },
             enum: ROLES,
          
-        }
+        },
+
+        description: {
+          type: String,
+          maxLength: [400, 'Description must have max 400 characters']
+      },
+      age: {
+          type: String,
+        
+      },
+      height: {
+          type: String,
+          validate: {
+            validator: (height) => HEIGHT.includes(height),
+            message: "Height is required"
+          },
+          enum: HEIGHT
+      },
     }
 );
 
