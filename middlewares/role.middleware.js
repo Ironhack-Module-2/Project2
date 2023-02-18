@@ -13,3 +13,11 @@ module.exports.isArtist = (req, res, next) => {
     res.redirect('/')
   }
 }
+
+module.exports.isArtist = (req, res, next) => {
+  if (req.user.role === 'artist') {
+    next()
+  } else {
+    res.redirect('/profile-set') //view de 'no eres artist'
+  }
+}

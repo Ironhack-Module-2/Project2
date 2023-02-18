@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const authController = require('../controllers/auth.controller');
-const roleController = require('../controllers/role.controller');
-const createController = require('../controllers/create.controller');
-const authMiddleware = require('../middlewares/auth.middleware');
+const router = require("express").Router();
+const authController = require("../controllers/auth.controller");
+const roleController = require("../controllers/role.controller");
+const createController = require("../controllers/create.controller");
+const authMiddleware = require("../middlewares/auth.middleware");
 //const roleMiddleware = require('../middlewares/role.middleware');
 
 
@@ -26,4 +26,9 @@ router.get('/home', authMiddleware.isAuthenticated, roleController.artist)
 //router.get("/perfil", verficarUser, perfilForm);
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
 
+
+router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
+router.get( "/home-artist", authMiddleware.isAuthenticated, roleController.homeArtist);
+
 module.exports = router;
+
