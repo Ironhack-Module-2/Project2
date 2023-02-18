@@ -8,14 +8,17 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.doCreate = (req, res, next) => {
-    Job.create(req.body)
-    .then(job => {
-        const newJob = {
-            ...req.body,
-            user: req.user.id
-          }
-        res.redirect('/home-hunter')
-    })
-    .catch(err => res.send(err))
-};
+   const newJob = {
+    ...req.body, 
+    user: req.user.id
+   }
+   console.log('********* ', newJob)
+   
+   Job.create(newJob)
+   .then(job => {
+    
+    res.redirect('/home-hunter')
 
+   })
+   .catch(err => console.log(err))
+}

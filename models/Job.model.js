@@ -10,8 +10,8 @@ const mongoose = require('mongoose');
              maxLength: [400, 'Description must have max 400 characters']
          },
          age: {
-             type: Number,
-             required: [true, 'Age is required'],
+             type: String,
+            required: [true, 'Age is required'],
          },
          height: {
              type: String,
