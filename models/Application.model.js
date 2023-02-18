@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const STATUS = ['Not contacted', 'Contacted', 'Casting Confirmed']
 
 const applicationSchema = new mongoose.Schema(
   {
@@ -16,6 +17,14 @@ const applicationSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: 'Job',
       required: [true, 'An app must have a job']
+    },
+    status: {
+      type: String,
+            validate: {
+              validator: (status) => STATUS.includes(status),
+            },
+            enum: STATUS,
+            default: 'Not contacted'
     }
   },
  /*  {
