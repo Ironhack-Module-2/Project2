@@ -15,7 +15,7 @@ module.exports.home = (req, res, next) => {
 }; */
 
 
-module.exports.profile = (req, res, next) => {
+module.exports.artist= (req, res, next) => {
     if (req.user.role === 'artist') {
         res.render('home/profile-set')
     } else {

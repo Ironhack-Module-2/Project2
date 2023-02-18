@@ -21,4 +21,9 @@ router.get('/home', authMiddleware.isAuthenticated, roleController.home);
 router.get('/create', authMiddleware.isAuthenticated, createController.create);
 router.post('/create', authMiddleware.isAuthenticated, createController.doCreate);
 
+router.get('/home', authMiddleware.isAuthenticated, roleController.artist)
+
+//router.get("/perfil", verficarUser, perfilForm);
+//router.post("/perfil", verficarUser, cambiarFotoPerfil);
+
 module.exports = router;

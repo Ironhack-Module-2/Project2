@@ -55,6 +55,10 @@ const userSchema = new mongoose.Schema (
           },
           enum: HEIGHT
       },
+      image: {
+        type: String,
+        default: null,
+    },
     }
 );
 
