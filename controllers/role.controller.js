@@ -1,13 +1,24 @@
-const Job = require("../models/Job.model");
-const mongoose = require("mongoose");
+
+const Job = require('../models/Job.model');
+const User = require('../models/User.model');
+const mongoose = require('mongoose');
+
 
 module.exports.home = (req, res, next) => {
-  if (req.user.role === "hunter") {
-    res.render("home/home-hunter");
-  } else {
-    res.render("home/profile-set");
-  }
+    if (req.user.role === 'hunter') {
+        Job.find({ user: { $ne: req.user.id } })
+         Job.find()
+        .populate('owner')
+            .then(jobs => {
+            res.render('home/home-hunter', { jobs });
+            })
+            .catch(err => next(err))
+            } else {
+                res.render("home/profile-set");
+          }
 };
+
+
 
 /* module.exports.isArtist = (req, res, next) => {
     res.render('home')

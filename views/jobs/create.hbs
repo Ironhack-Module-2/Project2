@@ -1,61 +1,11 @@
- {{!<h1 _ngcontent-vkb-c165="" class="heading-1">¡Hola, Hunter!</h1>
-
-<p _ngcontent-vkb-c165="" class="body-1 mb-4">Encuentra el talento que necesitas</p>
-<span _ngcontent-vkb-c157="" class="text-center"> No tienes ningún proceso de selección creado. <br _ngcontent-vkb-c157=""> Anímate a crear el primero. </span>
-
-<form class="row g-3" action="/create" method="POST">
-    <div class="form-group purple-border">
-        <label for="exampleFormControlTextarea4">Description</label>
-        <textarea class="form-control" id="description" rows="3" name="description"></textarea>
-    </div>
-    <div class="col-md-6">
-        <label for="" class="form-label">Age</label>
-        <input type="age" class="form-control" id="age" >
-    </div>
-
-     <div class="mb-3">
-        <label for="height" class="form-label">Height Range</label>
-        <select class="form-select" aria-label="Default select role" name="height" >
-            <option selected>select height range</option>
-            <option value='1.40 - 1.60'>1.40 - 1.60</option>
-            <option value='1.61 - 1.80'>1.61 - 1.80</option>
-            <option value='+1.80'>+1.80</option>
-        </select>
-    </div>    
-    
-    <div class="col-12">
-        <button _ngcontent-vkb-c157="" data-cy="new-process-button" class="col-xl-2 my-3 my-md-0 button-1 btn btn-success"><img _ngcontent-vkb-c157="" > Post job </button>
-    </div>
-</form>
-}}
-
-
-
-
-{{!-- <div>
-<form action="/create" method="POST">
-      <div class="mb-3">
-        <label for="body" class="form-label">Tweet</label>
-        <textarea class="form-control {{#if errors.body}}is-invalid{{/if}}" id="body" rows="3" name="body" required>{{job}}</textarea>
-        <div class="invalid-feedback">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div> --}}
-
-
-
-
 <h1>Create new job</h1>
 
 <form action="/create" method="POST">
   <div class="mb-3">
-    <label for="filmName" class="form-label">Film's Name</label>
+    <label for="title" class="form-label">Job title</label>
     <input
-      typeof="text" class="form-control form-control" id="filmName"
-      name="filmName" value="{{job.filmName}}" required
-    >
+      typeof="text" class="form-control form-control" id="title"
+      name="title" value="{{job.title}}" required >
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>

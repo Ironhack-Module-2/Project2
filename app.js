@@ -44,7 +44,7 @@ app.use(express.static("public"))
 
 /* Errors middlewares */
 
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
     next(createError(404, 'Resource not found'));
   });
   
@@ -56,7 +56,7 @@ app.use(express.static("public"))
       message: error.message,
       error: req.app.get('env') === 'development' ? error : {}
     })
-  }) */
+  })
 
 
 const PORT = process.env.PORT || 3000
