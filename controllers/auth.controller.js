@@ -89,6 +89,13 @@ module.exports.doLogin = (req, res, next) => {
   doLoginWithStrategy(req, res, next)
 }
 
+
+module.exports.doLogout = (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/login')
+}
+
 module.exports.home = (req, res, next) => {
   res.render('./home')
 }
+
