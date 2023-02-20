@@ -9,7 +9,7 @@ module.exports.home = (req, res, next) => {
         res.render('home/profile-set')
     }
 };
-
+//
 /* module.exports.isArtist = (req, res, next) => {
     res.render('home')
 }; */
