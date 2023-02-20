@@ -13,6 +13,10 @@ module.exports.doCreate = (req, res, next) => {
     user: req.user.id
    }
    console.log('********* ', newJob)
+
+   /*if(req.file) {
+    newJob.image =  req.file.path
+   }*/
    
    Job.create(newJob)
    .then(job => {

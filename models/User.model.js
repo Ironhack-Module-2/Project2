@@ -36,7 +36,9 @@ const userSchema = new mongoose.Schema (
               message: "Role is required"
             },
             enum: ROLES,
-         
+        },
+        image: {
+          type: String,
         },
 
         description: {
@@ -55,10 +57,7 @@ const userSchema = new mongoose.Schema (
           },
           enum: HEIGHT
       },
-      image: {
-        type: String,
-        default: null,
-    },
+     
     }
 );
 

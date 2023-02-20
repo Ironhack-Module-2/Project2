@@ -27,6 +27,8 @@ app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
 
+//const bodyParser = require('body-parser')
+
 app.use((req, res, next)=> {
   res.locals.currentUser = req.user;
   next()

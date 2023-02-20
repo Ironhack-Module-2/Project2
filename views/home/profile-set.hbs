@@ -38,12 +38,8 @@
                                         {{/if}}
                                      </div>
                             
-                                    <form
-                                        action="/perfil?_csrf={{csrfToken}}"
-                                         enctype="multipart/form-data"
-                                        method="post"
-                                    >
-                                         -- <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+                                    <form action="/perfil?_csrf={{csrfToken}}" enctype="multipart/form-data" method="post">
+                                     <input type="hidden" name="_csrf" value="{{csrfToken}}" />
                                         <input class="form-control mb-2" type="file" id="formFile" name="myFile" />
                                         <button class="btn btn-dark">Cambir foto</button>
                                     </form>

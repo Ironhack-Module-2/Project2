@@ -5,6 +5,8 @@ const createController = require('../controllers/create.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 //const roleMiddleware = require('../middlewares/role.middleware');
 
+const upload = require('../config/cloudinary.config')
+
 
 router.get('/', (req, res, next) => res.render('home'))
 
@@ -25,5 +27,7 @@ router.get('/home', authMiddleware.isAuthenticated, roleController.artist)
 
 //router.get("/perfil", verficarUser, perfilForm);
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
+
+//upload.single('image', createController.artis)
 
 module.exports = router;
