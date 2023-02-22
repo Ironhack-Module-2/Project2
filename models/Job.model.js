@@ -27,12 +27,6 @@ const mongoose = require('mongoose');
              },
              enum: HEIGHT
          },
-         
-         companyName: {
-            type: String, 
-            required: [true, "Company's name is required"]
-        },
-
          owner: {
             type: mongoose.Types.ObjectId,
             ref: 'User',
@@ -49,6 +43,13 @@ const mongoose = require('mongoose');
     localField: '_id',
     justOne: false
   }) */
+
+  jobSchema.virtual('apps', {
+    ref: 'Application',
+    foreignField: 'job',
+    localField: '_id',
+    justOne: false
+  })
 
  const Job = mongoose.model('Job', jobSchema);
 

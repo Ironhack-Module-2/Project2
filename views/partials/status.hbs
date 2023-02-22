@@ -1,0 +1,24 @@
+<div class="container text-center" style="margin-top:18px;">
+  <div class="row align-items-start">
+    <div class="col" id="not-contacted" style="color:#FC5661; font-weight:700; font-size:18px;">
+      Not contacted
+      {{#each apps as |app|}}
+            {{#hasContact app=app}}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{this.applicant}}</li>
+                </ul>
+            {{else}}
+                <p>Otra</p>
+            {{/hasContact}}
+        {{/each}}
+    </div>
+    <div class="col" id="contacted" style="color:#DC965A; font-weight:700; font-size:18px;">
+      {{! falta el helper de después de enviar el email}}
+      Contacted
+    </div>
+    <div class="col" id="pending" style="color:#00C49A; font-weight:700; font-size:18px;">
+      {{! falta el helper, seguramente un botón que se habilite después del contacto}}
+      Casting pending
+    </div>
+  </div>
+</div>

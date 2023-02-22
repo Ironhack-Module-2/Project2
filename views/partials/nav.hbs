@@ -1,13 +1,33 @@
-<!-- As a link -->
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/signup">Sign Up</a>
-      {{#if currentUser}}
-          <a class="nav-link" aria-current="page" href="/logout">Log out</a>
-            {{else}}
-            <a class="nav-link" aria-current="page" href="/signup">Sign up</a>
-            <a class="nav-link" aria-current="page" href="/login">Log in</a>
-      {{/if}}
-  </div>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #30343F;" id="navbar">
+  <div class="container-fluid" style="margin-left: 24px; margin-right:24px; margin-top:16px;">
+    
+      <a class="navbar-brand" href="./home">
+        <img src="./images/logo-white.png" height="40px">
+      </a>
+        <div class="d-flex">
+          {{#if currentUser}}
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" id="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/logout">Log out</a>
+                </li>
+              </ul>
+        
+              {{else}}
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/signup">Sign up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/login">Log in</a>
+                </li>
+              </ul>
+          {{/if}}
+        </div>
+      
+      </div>
+   
+   
 </nav>
 

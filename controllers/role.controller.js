@@ -8,7 +8,7 @@ module.exports.home = (req, res, next) => {
     if (req.user.role === 'hunter') {
         Job.find({ user: { $ne: req.user.id } })
          Job.find()
-        .populate('owner')
+        .populate('owner apps')
             .then(jobs => {
             res.render('home/home-hunter', { jobs });
             })
@@ -32,7 +32,7 @@ module.exports.artist= (req, res, next) => {
     } else {
         res.render('home/home-hunter')
     }
-
+};
 
 module.exports.homeArtist = (req, res, next) => {
   Job.find()
@@ -40,5 +40,4 @@ module.exports.homeArtist = (req, res, next) => {
       res.render("home/home-artist", { jobs });
     })
     .catch((err) => next(err));
-
 };

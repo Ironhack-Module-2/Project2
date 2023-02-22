@@ -28,13 +28,13 @@ router.post('/create', authMiddleware.isAuthenticated, createController.doCreate
 
 router.post('/jobs/:id/application', authMiddleware.isAuthenticated, appController.createApp);
 
-router.get('/home', authMiddleware.isAuthenticated, roleController.artist)
+//router.get('/home', authMiddleware.isAuthenticated, roleController.artist)
 
 //router.get("/perfil", verficarUser, perfilForm);
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
 
 
-router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
+//router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
 router.get( "/home-artist", authMiddleware.isAuthenticated, roleController.homeArtist);
 
 module.exports = router;
