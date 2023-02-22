@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 const ROLES = ['hunter', 'artist'];
 const HEIGHT = ['1.40 - 1.60', '1.61 - 1.80', '+1.80'];
+const AGE = ['-20', '21-35', '36-50', '+50']
 const EMAIL_PATTERN =
    /^(([^<>()[\]\\.,;:\s@“]+(\.[^<>()[\]\\.,;:\s@“]+)*)|(“.+“))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -35,8 +36,7 @@ const userSchema = new mongoose.Schema (
               validator: (role) => ROLES.includes(role),
               message: "Role is required"
             },
-            enum: ROLES,
-         
+            enum: ROLES
         },
 
         description: {
@@ -44,7 +44,13 @@ const userSchema = new mongoose.Schema (
           maxLength: [400, 'Description must have max 400 characters']
       },
       age: {
-          type: String,
+        type: String,
+        required: [true, 'Age is required'],
+        validate: {
+          validator: (age) => AGE.includes(age),
+          message: "Age is required"
+        },
+        enum: AGE
         
       },
       height: {
@@ -64,6 +70,12 @@ const userSchema = new mongoose.Schema (
         type: String,
         default: null,
     },
+    },
+    {
+      timestamps: true,
+      toObject: {
+        virtuals: true
+      }
     }
 );
 
@@ -84,6 +96,13 @@ userSchema.pre('save', function(next) {
   userSchema.methods.checkPassword = function(passwordToCompare) {
     return bcrypt.compare(passwordToCompare, this.password);
   }
+
+  userSchema.virtual('apps', {
+    ref: 'Application',
+    foreignField: 'applicant',
+    localField: '_id',
+    justOne: false
+  })
 
 const User = mongoose.model('User', userSchema);
 

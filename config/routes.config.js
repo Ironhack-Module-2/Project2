@@ -41,7 +41,13 @@ router.post(
   appController.createApp
 );
 
+
+router.post('/jobs/:id/application', authMiddleware.isAuthenticated, appController.createApp);
+
+
+
 router.get("/home", authMiddleware.isAuthenticated, roleController.artist);
+
 
 //router.get("/perfil", verficarUser, perfilForm);
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
@@ -53,11 +59,16 @@ router.get(
   roleController.homeArtist
 );
 
+
+//router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
+router.get( "/home-artist", authMiddleware.isAuthenticated, roleController.homeArtist);
+
 router.get(
   "/candidates",
   authMiddleware.isAuthenticated,
   roleMiddleware.isHunter,
   roleController.candidatesList
 );
+
 
 module.exports = router;

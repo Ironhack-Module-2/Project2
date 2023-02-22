@@ -8,6 +8,7 @@ passport.serializeUser((user, next) => {
 
 passport.deserializeUser((id, next) => {
     User.findById(id)
+    .populate('apps')
     .then(user => {
         next(null, user)
     })
