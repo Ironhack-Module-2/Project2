@@ -7,12 +7,12 @@
                             <h3 class="dark-color">Profile</h3>
                                 <div class="col-md-6">
                                         <label for="" class="form-label">Age</label>
-                                        <input type="age" class="form-control" id="age"  name="age" value="{{job.age}}" required>
+                                        <input type="age" class="form-control" id="age"  name="age" value={{user.age}} required>
                                     
                                     </div>
                                 <div class="mb-3">
                                         <label for="height"  class="form-label">Height Range</label>
-                                        <select class="form-select" aria-label="Default select role" name="height"  value="{{job.height}}" required>
+                                        <select class="form-select" aria-label="Default select role" name="height"  value={{user.height}} required>
                                        <option selected>select height range</option>
                                           <option value='1.40 - 1.60'>1.40 - 1.60</option>
                                             <option value='1.61 - 1.80'>1.61 - 1.80</option>
@@ -45,11 +45,11 @@
                                     >
                                          -- <input type="hidden" name="_csrf" value="{{csrfToken}}" />
                                         <input class="form-control mb-2" type="file" id="formFile" name="myFile" />
-                                        <button class="btn btn-dark">Cambir foto</button>
+                                        <button class="btn btn-dark">Cambiar foto</button>
                                     </form>
                             <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control form-control" id="description" rows="3" typeof="text" name="description" value="{{job.description}}" required></textarea>
+                                    <textarea class="form-control form-control" id="description" rows="3" typeof="text" name="description" value={{user.description}} required></textarea>
                                      
                             </div>
                         </div>

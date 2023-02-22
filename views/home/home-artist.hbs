@@ -3,6 +3,7 @@
     
       <h1>Open Candidatures</h1>
       <div class="home-artist-3">
+
          {{#each jobs as |job|}}
           {{> jobcard job=job currentUser=../currentUser}}
           {{!-- <form method="POST" action="/jobs/{{job.id}}/application">

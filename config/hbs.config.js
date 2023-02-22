@@ -21,6 +21,7 @@ hbs.registerHelper('isOwner', function (options) {
     } else {
       return options.inverse(this);
     }
+
   }) */
 
  hbs.registerHelper('hasApplied', function (options) {
@@ -47,3 +48,20 @@ hbs.registerHelper('isOwner', function (options) {
       return options.fn(this);
     }
   });
+
+  })
+
+  hbs.registerHelper('formatDate', (date) => {
+    const toDate = new Date(date)
+  
+    let day = toDate.getDate()
+    let month = toDate.getMonth() + 1
+    let year = toDate.getFullYear()
+  
+    if (month < 10) {
+      return `${day}-0${month}-${year}`
+    } else {
+      return `${day}-${month}-${year}`
+    }
+  })
+
