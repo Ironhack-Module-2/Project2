@@ -6,10 +6,12 @@ module.exports.isHunter = (req, res, next) => {
   }
 }
 
+
+
 module.exports.isArtist = (req, res, next) => {
-  if (req.user.role === 'Artist') {
+  if (req.user.role === 'artist') {
     next()
   } else {
-    res.redirect('/profile')
+    res.redirect('/profile-set') //view de 'no eres artist'
   }
 }

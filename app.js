@@ -5,6 +5,8 @@ const express = require('express');
 const logger = require('morgan');
 const createError = require('http-errors');
 const passport = require('passport');
+const bodyParser= require('body-parser')
+const multer = require('multer');
 
 const app = express();
 
@@ -27,7 +29,7 @@ app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
 
-//const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.use((req, res, next)=> {
   res.locals.currentUser = req.user;
@@ -46,7 +48,7 @@ app.use(express.static("public"))
 
 /* Errors middlewares */
 
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
     next(createError(404, 'Resource not found'));
   });
   
@@ -58,7 +60,7 @@ app.use(express.static("public"))
       message: error.message,
       error: req.app.get('env') === 'development' ? error : {}
     })
-  }) */
+  })
 
 
 const PORT = process.env.PORT || 3000

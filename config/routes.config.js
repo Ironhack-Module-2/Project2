@@ -1,11 +1,15 @@
+
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const roleController = require('../controllers/role.controller');
 const createController = require('../controllers/create.controller');
+const appController = require('../controllers/application.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
+
+
 //const roleMiddleware = require('../middlewares/role.middleware');
 
-const upload = require('../config/cloudinary.config')
+//const fileUploader = require('../config/cloudinary.config');
 
 
 router.get('/', (req, res, next) => res.render('home'))
@@ -23,11 +27,18 @@ router.get('/home', authMiddleware.isAuthenticated, roleController.home);
 router.get('/create', authMiddleware.isAuthenticated, createController.create);
 router.post('/create', authMiddleware.isAuthenticated, createController.doCreate);
 
+router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.updateArtist);
+router.post('/profile-set', authMiddleware.isAuthenticated, roleController.doUpdateArtist )
+
+//router.post('/jobs/:id/application', authMiddleware.isAuthenticated, appController.createApp);
+
 router.get('/home', authMiddleware.isAuthenticated, roleController.artist)
 
-//router.get("/perfil", verficarUser, perfilForm);
-//router.post("/perfil", verficarUser, cambiarFotoPerfil);
 
-//upload.single('image', createController.artis)
+
+
+/router.get( "/home-artist", authMiddleware.isAuthenticated, roleController.homeArtist);
 
 module.exports = router;
+
+

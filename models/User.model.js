@@ -39,18 +39,22 @@ const userSchema = new mongoose.Schema (
         },
         image: {
           type: String,
+          required: [true, 'image is required'],
         },
 
         description: {
           type: String,
+          required: [true, 'description is required'],
           maxLength: [400, 'Description must have max 400 characters']
       },
       age: {
           type: String,
+          required: [true, 'age is required'],
         
       },
       height: {
           type: String,
+          required: [true, 'height is required'],
           validate: {
             validator: (height) => HEIGHT.includes(height),
             message: "Height is required"

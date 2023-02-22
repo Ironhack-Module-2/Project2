@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h4 style="margin-left: 1.2rem;">Open Candidatures</h4>
+      
+      <div class="home-artist-3">
+        {{#each jobs as |job|}}
+          <h2>{{job.filmName}}</h2>
+          <p>{{job.description}}</p>
+          <p>{{job.age}}</p>
+          <p>{{job.height}}</p>
+          <p>{{job.companyName}}</p>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

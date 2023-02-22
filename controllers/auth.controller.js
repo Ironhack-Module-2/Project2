@@ -18,8 +18,6 @@ module.exports.doSignup = (req, res, next) => {
       })
     }
 
-    console.log(req.body);
-
     const { firstName, lastName, email, password, role } = req.body;
 
     User.findOne({ email })
@@ -27,16 +25,13 @@ module.exports.doSignup = (req, res, next) => {
         if (user) {
           renderWithErrors({ email: 'email already in use' })
         } else {
-            console.log('entro ********', req.body)
           return User.create(req.body)
         }
       })
       .then(userCreated => {
-        console.log({ userCreated })
         res.redirect('/login')
       })
       .catch(err => {
-        console.log('error *****', err)
         if (err instanceof mongoose.Error.ValidationError) {
           renderWithErrors(err.errors)
         } else {

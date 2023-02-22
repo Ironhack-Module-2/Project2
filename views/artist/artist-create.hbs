@@ -1,32 +1,32 @@
-<h2>PROFILE</h2>
+<h2>UPDATE PROFILE</h2>
 <div class="row">
   <div class="col-md-6">
-    <form action="/profile-set" method="POST" enctype="multipart/formn-data">
-    <div class="form-group">
+    <form action="/home/{{user.id}}/edit" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
         <label for="image-input">Image:</label>
         <input type="file" name="image" id="image-input" class="form-control-file" />
-        <input type="text" name="existingImage" hidden id="">
+        <input type="text" name="existingImage" hidden id="" value="{{imageUrl}}">
       </div>
        
        <div class="form-group">
             <label for="description-input">Description:</label>
-            <textarea name="description" id="description-input" cols="30" rows="4" class="form-control"> </textarea>
+            <textarea name="description" id="description-input" cols="30" rows="4" class="form-control" value="{{user.description}}"> </textarea>
        </div>
 
       <div class="form-group">
         <label for="title-input">firstName</label>
-        <input type="text" name="firstName" id="firstName" class="form-control" />
+        <input type="text" name="firstName" value="{{user.firstName}}" id="firstName" class="form-control" />
       </div>
 
       <div class="col-md-6">
             <label for="" class="form-label">Age</label>
-            <input type="age" class="form-control" id="age"  name="age">
+            <input type="age" class="form-control" id="age"  name="age" value="{{user.age}}" >
                                         
         </div>
 
         <div class="mb-3">
             <label for="height"  class="form-label">Height Range</label>
-                <select class="form-select" aria-label="Default select role" name="height" >
+                <select class="form-select" aria-label="Default select role" name="height"  value="{{user.height}}" >
                     <option selected>select height range</option>
                     <option value='1.40 - 1.60'>1.40 - 1.60</option>
                     <option value='1.61 - 1.80'>1.61 - 1.80</option>
@@ -39,4 +39,3 @@
     </form>
   </div>
 </div>
-
