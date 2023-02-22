@@ -55,6 +55,11 @@ const userSchema = new mongoose.Schema (
           },
           enum: HEIGHT
       },
+
+      companyName: {
+        type: String, 
+        required: [true, "Company's name is required"]
+      },
       image: {
         type: String,
         default: null,

@@ -4,11 +4,13 @@
       <h4 style="margin-left: 1.2rem;">Open Candidatures</h4>
       <div class="home-artist-3">
         {{#each jobs as |job|}}
-          <h2>{{job.filmName}}</h2>
+          <h2>{{job.title}}</h2>
           <p>{{job.description}}</p>
           <p>{{job.age}}</p>
           <p>{{job.height}}</p>
-          <p>{{job.companyName}}</p>
+          <p>{{job.owner.companyName}}</p>
+          <p>{{job.owner.firstName}}</p>
+          <p>{{job.createdAt}}</p>
         {{/each}}
       </div>
     </div>
