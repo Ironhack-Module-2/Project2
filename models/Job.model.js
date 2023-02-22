@@ -27,28 +27,26 @@ const mongoose = require('mongoose');
              },
              enum: HEIGHT
          },
-         
-         companyName: {
-            type: String, 
-            required: [true, "Company's name is required"]
-        },
 
          owner: {
             type: mongoose.Types.ObjectId,
             ref: 'User',
-            required: [true, 'A tweet must have an owner']
+            required: [true, 'A job must have an owner']
           },
-
-     }
+        },
+        {
+          timestamps: true,
+        }
  );
 
 
-/*  jobSchema.virtual('application', {
+  jobSchema.virtual('apps', {
     ref: 'Application',
     foreignField: 'job',
     localField: '_id',
     justOne: false
-  }) */
+  })
+
 
  const Job = mongoose.model('Job', jobSchema);
 

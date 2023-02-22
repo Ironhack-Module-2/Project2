@@ -1,21 +1,28 @@
 
+
 const Job = require('../models/Job.model');
 const User = require('../models/User.model');
 const mongoose = require('mongoose');
+
 
 module.exports.home = (req, res, next) => {
     if (req.user.role === 'hunter') {
         Job.find({ user: { $ne: req.user.id } })
          Job.find()
-        .populate('owner')
+
+        .populate('owner apps')
+
             .then(jobs => {
             res.render('home/home-hunter', { jobs });
             })
             .catch(err => next(err))
             } else {
-                res.redirect("/profile-set");
+
+                res.render("home/profile-set");
           }
 };
+
+
 
 
 module.exports.artist= (req, res, next) => {
@@ -24,15 +31,18 @@ module.exports.artist= (req, res, next) => {
     } else {
         res.render('home/home-hunter')
     }
-}
 
+};
 
 module.exports.homeArtist = (req, res, next) => {
   Job.find()
+    .populate('owner')
+
     .then((jobs) => {
       res.render("home/home-artist", { jobs });
     })
     .catch((err) => next(err));
+
 
 }
 
@@ -76,3 +86,16 @@ module.exports.homeArtist = (req, res, next) => {
     }
     
   
+
+};
+
+module.exports.candidatesList = (req, res, next) => {
+  console.log(req.user);
+  User.find()
+    .then((candidates) => {
+      res.render("hunter-views/candidates", { candidates });
+    })
+    .catch((err) => next(err));
+
+};
+

@@ -27,12 +27,15 @@ const applicationSchema = new mongoose.Schema(
             default: 'Not contacted'
     }
   },
- /*  {
+
+  {
+
     timestamps: true,
     toObject: {
       virtuals: true
     }
-  } */
+
+  }
 )
 
 const Application = mongoose.model('Application', applicationSchema);

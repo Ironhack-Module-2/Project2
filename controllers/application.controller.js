@@ -18,7 +18,8 @@ module.exports.createApp = (req, res, next) => {
 
             Application.create(application)
             .then(() => {
-                res.redirect('/home')
+                res.redirect('/home-artist')
+
                  })
             })
             .catch(err => next(err))

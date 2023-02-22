@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h4 style="margin-left: 1.2rem;">List of candidates</h4>
+      <div class="candidates-3">
+        {{#each user as |user|}}
+          <h2>{{user.firstName}}</h2>
+          <p>{{user.lastName}}</p>
+          <p>{{user.age}}</p>
+          <p>{{user.height}}</p>
+          <p>{{user.description}}</p>
+          <p>{{user.imagen}}</p>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
