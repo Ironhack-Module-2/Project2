@@ -49,7 +49,6 @@ hbs.registerHelper('isOwner', function (options) {
     }
   });
 
-  })
 
   hbs.registerHelper('formatDate', (date) => {
     const toDate = new Date(date)

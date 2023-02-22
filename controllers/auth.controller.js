@@ -8,6 +8,7 @@ module.exports.signup = (req, res, next) => {
 };
 
 module.exports.doSignup = (req, res, next) => {
+
     const renderWithErrors = (errors) => {
       const userData = { ...req.body }
       delete userData.password
@@ -25,11 +26,13 @@ module.exports.doSignup = (req, res, next) => {
         if (user) {
           renderWithErrors({ email: 'email already in use' })
         } else {
-          return User.create(req.body)
+    
+          User.create(req.body)
+            .then(user => {
+              res.redirect('/login')
+            })
+            .catch((err) => console.log('entro', err))
         }
-      })
-      .then(userCreated => {
-        res.redirect('/login')
       })
       .catch(err => {
         if (err instanceof mongoose.Error.ValidationError) {

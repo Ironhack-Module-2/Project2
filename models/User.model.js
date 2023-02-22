@@ -45,13 +45,11 @@ const userSchema = new mongoose.Schema (
       },
       age: {
         type: String,
-        required: [true, 'Age is required'],
         validate: {
           validator: (age) => AGE.includes(age),
           message: "Age is required"
         },
         enum: AGE
-        
       },
       height: {
           type: String,
@@ -60,11 +58,6 @@ const userSchema = new mongoose.Schema (
             message: "Height is required"
           },
           enum: HEIGHT
-      },
-
-      companyName: {
-        type: String, 
-        required: [true, "Company's name is required"]
       },
       image: {
         type: String,
