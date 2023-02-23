@@ -26,7 +26,7 @@ hbs.registerHelper('isOwner', function (options) {
 
  hbs.registerHelper('hasApplied', function (options) {
     const { currentUser, job } = options.hash;
-    console.log({ currentUser })
+
 
     // like.tweet no es de tipo string, es de tipo object porque es un objectId
     // así que le metemos un .toString() y asi se compara guay
@@ -40,7 +40,6 @@ hbs.registerHelper('isOwner', function (options) {
   hbs.registerHelper('hasContact', function (options) {
     const { job, app, user } = options.hash; //ausilio, va job o no?
 
-    console.log(app)
 
     if (application.status === 'Not contacted') {
       return options.inverse(this); //me falta un tercer if que no se como poner

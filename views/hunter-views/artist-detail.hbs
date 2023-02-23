@@ -1,0 +1,40 @@
+<h1>{{user.firstName}} {{user.lastName}}</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex gap-3">
+                <p>Age range: {{user.age}}</p>
+                <p>Height range: {{user.height}}</p>
+            </div>
+            <h3>Bio</h3>
+            <p>{{user.description}}</p>
+        </div>
+        <div class="col">
+            <h1>Contact</h1>
+            <form action="/artist-detail" method="POST">
+                <div class="mb-3" style="margin-top: 32px;">
+                    <label for="artistEmail" class="form-label">Email</label>
+                    <input value="{{user.email}}" type="artistEmail" class="form-control" placeholder="name@example.com" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" {{#if errorMessage}}is-invalid{{/if}} id="artistEmail" name="artistEmail" aria-describedby="emailHelp" required>
+                    <div class="invalid-feedback">
+                    {{errorMessage}}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control form-control" id="description" rows="3" typeof="text" name="message" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" required></textarea>
+                </div>
+                <div style="margin-top:32px">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

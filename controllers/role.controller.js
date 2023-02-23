@@ -6,7 +6,13 @@ module.exports.home = (req, res, next) => {
     if (req.user.role === 'hunter') {
         Job.find({ user: { $ne: req.user.id } })
          Job.find()
-        .populate('owner apps')
+        .populate('owner')
+        .populate({
+          path:'apps',
+          populate: {
+            path: 'applicant'
+          }
+        })
             .then(jobs => {
             res.render('home/home-hunter', { jobs });
             })
@@ -14,7 +20,10 @@ module.exports.home = (req, res, next) => {
             } else {
                 res.render("home/profile-set");
           }
+        
 };
+
+
 
 /* module.exports.isArtist = (req, res, next) => {
     res.render('home')
@@ -42,8 +51,18 @@ module.exports.homeArtist = (req, res, next) => {
 };
 
 module.exports.candidatesList = (req, res, next) => {
-  console.log(req.user);
+ 
   User.find()
+    .then((candidates) => {
+      res.render("hunter-views/candidates", { candidates });
+    })
+    .catch((err) => next(err));
+
+};
+
+module.exports.status = (req, res, next) => {
+  Application.find()
+    .populate('applicant')
     .then((candidates) => {
       res.render("hunter-views/candidates", { candidates });
     })
