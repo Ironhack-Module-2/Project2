@@ -51,6 +51,9 @@ const userSchema = new mongoose.Schema (
         },
         enum: AGE
       },
+        companyName: {
+          type: String, 
+      },
       height: {
           type: String,
           validate: {
@@ -63,9 +66,12 @@ const userSchema = new mongoose.Schema (
         type: String,
         default: null,
     },
+      owner: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User',
     },
-    {
-      timestamps: true,
+  },
+  {      timestamps: true,
       toObject: {
         virtuals: true
       }

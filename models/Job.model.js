@@ -28,16 +28,16 @@ const mongoose = require('mongoose');
              enum: HEIGHT
          },
 
-         owner: {
-            type: mongoose.Types.ObjectId,
-            ref: 'User',
-            required: [true, 'A job must have an owner']
-          },
-        },
-        {
-          timestamps: true,
-        }
- );
+        owner: {
+           type: mongoose.Types.ObjectId,
+           ref: 'User',
+           required: [true, 'A job must have an owner']
+         },
+      },
+      {
+         timestamps: true,
+       }
+);
 
 
 /*  jobSchema.virtual('application', {
