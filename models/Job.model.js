@@ -28,6 +28,11 @@ const mongoose = require('mongoose');
              enum: HEIGHT
          },
 
+          publicationDate: {
+          type: Date,
+         default: Date.now,
+          },
+
         owner: {
            type: mongoose.Types.ObjectId,
            ref: 'User',
@@ -35,8 +40,12 @@ const mongoose = require('mongoose');
          },
       },
       {
-         timestamps: true,
-       }
+     
+        timestamps: true,
+        toObject: {
+          virtuals: true
+        }
+      }
 );
 
 

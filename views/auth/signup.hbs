@@ -13,8 +13,13 @@
         {{errors.lastName}}
     </div>  
   </div>
-    
-  <div class="mb-3">
+     <div class="mb-3">
+        <label for="companyName" class="form-label">Company's Name</label>
+        <input class="form-control {{#if errors.companyName}}is-invalid{{/if}}" id="companyName" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:225px" name="companyName" value:"{{user.companyName}}" placeholder="Company Name">
+        {{errors.companyName}}
+    </div>  
+  </div>
+    <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
     <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" aria-describedby="emailHelp" value="{{user.email}}" name="email" placeholder="name@example.com">
     <div id="emailHelp" class="form-text"></div>

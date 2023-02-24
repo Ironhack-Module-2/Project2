@@ -5,6 +5,7 @@ const express = require('express');
 const logger = require('morgan');
 const createError = require('http-errors');
 const passport = require('passport');
+const path = require('path');
 
 const app = express();
 

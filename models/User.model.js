@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { isHunter } = require('../middlewares/role.middleware');
 
 
 const SALT_ROUNDS = 10;
@@ -53,7 +54,8 @@ const userSchema = new mongoose.Schema (
       },
         companyName: {
           type: String, 
-      },
+          },
+          
       height: {
           type: String,
           validate: {
@@ -71,12 +73,13 @@ const userSchema = new mongoose.Schema (
       ref: 'User',
     },
   },
-  {      timestamps: true,
-      toObject: {
-        virtuals: true
-      }
+  {
+    timestamps: true,
+    toObject: {
+      virtuals: true
     }
-);
+  }
+)
 
 userSchema.pre('save', function(next) {
     const rawPassword = this.password;

@@ -48,5 +48,18 @@ router.get( "/home-artist", authMiddleware.isAuthenticated, roleController.homeA
 
 router.get("/candidates", authMiddleware.isAuthenticated, roleMiddleware.isHunter, roleController.candidatesList);
 
+router.get('/home-artist', async (req, res) => {
+  const jobs = await Job.find().populate('owner');
+  hbs.registerHelper('elapsedTime', function (publicationDate) {
+    // función elapsedTime aquí
+  });
+
+  if (hbs.handlebars.helpers.elapsedTime === undefined) {
+    console.log("Helper elapsedTime no encontrado");
+    res.status(500).send("Helper elapsedTime no encontrado");
+  } else {
+    res.render('home/home-artist', { jobs });
+  }
+});
 
 module.exports = router;
