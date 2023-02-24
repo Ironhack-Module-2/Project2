@@ -33,7 +33,7 @@ const applicationSchema = new mongoose.Schema(
       virtuals: true
     }
   }
-)
+);
 
 const Application = mongoose.model('Application', applicationSchema);
 
