@@ -2,6 +2,7 @@ const { application } = require("express");
 const hbs = require("hbs");
 const path = require("path");
 hbs.registerPartials(path.join(__dirname, "../views/partials"));
+const moment = require("moment");
 
 hbs.registerHelper("isOwner", function (options) {
   const { currentUser, jobOwnerId } = options.hash; //de donde sale jobOwnerId????
@@ -65,16 +66,22 @@ hbs.registerHelper("hasConfirmed", function (options) {
   }
 });
 
-hbs.registerHelper("formatDate", (date) => {
-  const toDate = new Date(date);
+hbs.registerHelper("elapsedTime", function (publicationDate) {
+  const currentTime = new Date();
+  const elapsedTime = Date.parse(currentTime) - Date.parse(publicationDate);
 
-  let day = toDate.getDate();
-  let month = toDate.getMonth() + 1;
-  let year = toDate.getFullYear();
+  const seconds = Math.floor(elapsedTime / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
 
-  if (month < 10) {
-    return `${day}-0${month}-${year}`;
+  if (days > 0) {
+    return days + " days";
+  } else if (hours > 0) {
+    return hours + " hours";
+  } else if (minutes > 0) {
+    return minutes + " minutes";
   } else {
-    return `${day}-${month}-${year}`;
+    return seconds + " seconds";
   }
 });

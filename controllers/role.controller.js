@@ -21,7 +21,6 @@ module.exports.home = (req, res, next) => {
     res.render("home/home-artist");
   }
 };
-
 /* module.exports.isArtist = (req, res, next) => {
     res.render('home')
 }; */
@@ -32,6 +31,18 @@ module.exports.artist = (req, res, next) => {
   } else {
     res.render("home/home-hunter");
   }
+};
+
+module.exports.updateArtist = (req, res, next) => {
+  res.render("home/profile-set");
+};
+
+module.exports.doUpdateArtist = (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, req.body)
+    .then(() => {
+      res.redirect("/home");
+    })
+    .catch(next);
 };
 
 module.exports.updateArtist = (req, res, next) => {
@@ -54,27 +65,27 @@ module.exports.doUpdateArtist = (req, res, next) => {
     .catch(next);
 };
 
-
-
 module.exports.updateArtist = (req, res, next) => {
-  res.render('home/profile-set')
+  res.render("home/profile-set");
 };
 
 module.exports.doUpdateArtist = (req, res, next) => {
-
-      User.findByIdAndUpdate(req.user.id, req.body)
-      .then(() => {
-        
-          res.redirect('/home')
-      })
-      .catch(nex)
+  User.findByIdAndUpdate(req.user.id, req.body)
+    .then(() => {
+      res.redirect("/home");
+    })
+    .catch(nex);
 };
- 
-
-
 
 module.exports.homeArtist = (req, res, next) => {
-  Job.find()
+  const { height, age, gender } = req.user;
+  const criteria = {
+    height,
+    gender,
+    minAge: { $lte: age },
+    maxAge: { $gte: age },
+  };
+  Job.find(criteria)
     .populate("owner")
     .then((jobs) => {
       res.render("home/home-artist", { jobs });
@@ -83,7 +94,7 @@ module.exports.homeArtist = (req, res, next) => {
 };
 
 module.exports.candidatesList = (req, res, next) => {
-  User.find()
+  User.find({ role: "artist" })
     .then((candidates) => {
       res.render("hunter-views/candidates", { candidates });
     })

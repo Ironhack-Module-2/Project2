@@ -98,13 +98,6 @@ router.get(
   roleController.homeArtist
 );
 
-//router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
-router.get(
-  "/home-artist",
-  authMiddleware.isAuthenticated,
-  roleController.homeArtist
-);
-
 router.get(
   "/candidates",
   authMiddleware.isAuthenticated,

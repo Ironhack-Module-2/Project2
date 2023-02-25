@@ -20,9 +20,13 @@
 <div >
   <section class="border-bottom-0 border-top-0 w-100 p-4">
       <h1>Be casted in...</h1>
-      <div class="d-flex gap-3">
-         {{#each jobs as |job|}}
-          {{> jobcard job=job currentUser=../currentUser}}
+      <div class="row">
+        {{#each jobs as |job|}}
+          <div class="col-md-3">
+            <div class="d-flex gap-3">
+              {{> jobcard job=job currentUser=../currentUser}}
+            </div>
+          </div>
         {{/each}}
       </div>
   </section>

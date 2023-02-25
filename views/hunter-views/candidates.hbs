@@ -1,15 +1,20 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h4 style="margin-left: 1.2rem;">List of candidates</h4>
+      <section class="border-bottom-0 border-top-0 w-100 p-4">
+        <h1>Choose your best candidate</h1>
+      </section>
       <div class="candidates-3">
-        {{#each user as |user|}}
-          <h2>{{user.firstName}}</h2>
-          <p>{{user.lastName}}</p>
-          <p>{{user.age}}</p>
-          <p>{{user.height}}</p>
-          <p>{{user.description}}</p>
-          <p>{{user.imagen}}</p>
+        {{#each candidates as |candidate|}}
+          <div class="card mb-3" style="width: 20rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:#FAFAFF; border-radius:4px; border-color:#30343F">
+            <img class="card-img-top" src="{{candidate.image}}" alt="{{candidate.firstName}}">
+            <div class="card-body" style="padding-right:0px">
+              <p class="card-text">Gender: {{candidate.gender}}</p>
+              <p class="card-text">Age: {{candidate.age}}</p>
+              <p class="card-text">Height: {{candidate.height}}</p>
+              <p class="card-text">{{candidate.description}}</p>
+            </div>
+          </div>
         {{/each}}
       </div>
     </div>
