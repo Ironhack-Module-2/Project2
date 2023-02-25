@@ -18,7 +18,7 @@ module.exports.home = (req, res, next) => {
       })
       .catch((err) => next(err));
   } else {
-    res.render("home/profile-set");
+    res.render("home/home-artist");
   }
 };
 /* module.exports.isArtist = (req, res, next) => {
@@ -45,6 +45,38 @@ module.exports.doUpdateArtist = (req, res, next) => {
     .catch(next);
 };
 
+module.exports.updateArtist = (req, res, next) => {
+  res.render("home/profile-set");
+};
+
+module.exports.doUpdateArtist = (req, res, next) => {
+  console.log(req.file?.path);
+  const userUpdated = {
+    description: req.body.description,
+    age: req.body.age,
+    height: req.body.height,
+    image: req.file.path,
+  };
+
+  User.findByIdAndUpdate(req.user.id, userUpdated)
+    .then(() => {
+      res.redirect("/home");
+    })
+    .catch(next);
+};
+
+module.exports.updateArtist = (req, res, next) => {
+  res.render("home/profile-set");
+};
+
+module.exports.doUpdateArtist = (req, res, next) => {
+  User.findByIdAndUpdate(req.user.id, req.body)
+    .then(() => {
+      res.redirect("/home");
+    })
+    .catch(nex);
+};
+
 module.exports.homeArtist = (req, res, next) => {
   const { height, age, gender } = req.user;
   const criteria = {
@@ -63,6 +95,15 @@ module.exports.homeArtist = (req, res, next) => {
 
 module.exports.candidatesList = (req, res, next) => {
   User.find({ role: "artist" })
+    .then((candidates) => {
+      res.render("hunter-views/candidates", { candidates });
+    })
+    .catch((err) => next(err));
+};
+
+module.exports.status = (req, res, next) => {
+  Application.find()
+    .populate("applicant")
     .then((candidates) => {
       res.render("hunter-views/candidates", { candidates });
     })

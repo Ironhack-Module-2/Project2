@@ -27,9 +27,6 @@ hbs.registerHelper("isOwner", function (options) {
 
 hbs.registerHelper("hasApplied", function (options) {
   const { currentUser, job } = options.hash;
-
-  // like.tweet no es de tipo string, es de tipo object porque es un objectId
-  // así que le metemos un .toString() y asi se compara guay
   if (
     currentUser.apps.some((app) => app.job.toString() === job._id.toString())
   ) {
@@ -40,14 +37,32 @@ hbs.registerHelper("hasApplied", function (options) {
 });
 
 hbs.registerHelper("hasContact", function (options) {
-  const { job, app, user } = options.hash; //ausilio, va job o no?
+  const { job, app, user } = options.hash;
 
-  console.log(app);
-
-  if (application.status === "Not contacted") {
-    return options.inverse(this); //me falta un tercer if que no se como poner
-  } else {
+  if (app.status === "Not contacted") {
     return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
+hbs.registerHelper("hasCasting", function (options) {
+  const { job, app, user } = options.hash;
+
+  if (app.status === "Contacted") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
+hbs.registerHelper("hasConfirmed", function (options) {
+  const { job, app, user } = options.hash;
+
+  if (app.status === "Casting Confirmed") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
   }
 });
 

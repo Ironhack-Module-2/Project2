@@ -7,6 +7,8 @@ const createError = require('http-errors');
 const passport = require('passport');
 const path = require('path');
 
+const nodemailer = require('nodemailer')
+
 const app = express();
 
 app.use(logger('dev'));

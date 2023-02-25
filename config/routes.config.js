@@ -3,6 +3,8 @@ const authController = require("../controllers/auth.controller");
 const roleController = require("../controllers/role.controller");
 const createController = require("../controllers/create.controller");
 const appController = require("../controllers/application.controller");
+const profileController = require("../controllers/profile.controller");
+
 const authMiddleware = require("../middlewares/auth.middleware");
 const roleMiddleware = require("../middlewares/role.middleware");
 
@@ -28,7 +30,12 @@ router.post(
 
 router.get("/logout", authMiddleware.isAuthenticated, authController.doLogout);
 
-router.get("/home", authMiddleware.isAuthenticated, roleController.home);
+router.get(
+  "/home",
+  authMiddleware.isAuthenticated,
+  roleMiddleware.isFullfilled,
+  roleController.home
+);
 
 router.get("/create", authMiddleware.isAuthenticated, createController.create);
 router.post(
@@ -44,8 +51,30 @@ router.post(
 );
 
 //router.get("/home", authMiddleware.isAuthenticated, roleController.artist);
-//....
-//router.post("/home",authMiddleware.isAuthenticated,upload.single('image'), roleController.artist)
+
+router.get(
+  "/profile",
+  authMiddleware.isAuthenticated,
+  profileController.isArtist
+);
+
+router.get(
+  "/profile/:id/:appId/detail",
+  authMiddleware.isAuthenticated,
+  profileController.detail
+);
+
+router.post(
+  "/profile/:id/:appId/message",
+  authMiddleware.isAuthenticated,
+  profileController.message
+);
+
+router.post(
+  "/profile/:id/:appId/confirm",
+  authMiddleware.isAuthenticated,
+  profileController.confirm
+);
 
 //router.get("/perfil", verficarUser, perfilForm);
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
@@ -55,9 +84,11 @@ router.get(
   authMiddleware.isAuthenticated,
   roleController.updateArtist
 );
+
 router.post(
   "/profile-set",
   authMiddleware.isAuthenticated,
+  upload.single("image"),
   roleController.doUpdateArtist
 );
 
@@ -67,12 +98,17 @@ router.get(
   roleController.homeArtist
 );
 
-//router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
 router.get(
   "/candidates",
   authMiddleware.isAuthenticated,
   roleMiddleware.isHunter,
   roleController.candidatesList
+);
+
+router.get(
+  "/confirmation",
+  authMiddleware.isAuthenticated,
+  profileController.messageSent
 );
 
 module.exports = router;
