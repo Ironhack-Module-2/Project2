@@ -1,5 +1,5 @@
 module.exports.isHunter = (req, res, next) => {
-  if (req.user.role === 'hunter') {
+  if (req.user.role === 'hunter' ) {
     next()
   } else {
     res.redirect('/') //view de 'no eres hunter'
@@ -21,3 +21,5 @@ module.exports.isArtist = (req, res, next) => {
     res.redirect('/profile-set') //view de 'no eres artist'
   }
 }
+
+

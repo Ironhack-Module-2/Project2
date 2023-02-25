@@ -23,28 +23,46 @@ module.exports.home = (req, res, next) => {
 
 
 
-module.exports.artist= (req, res, next) => {
+/*module.exports.artist= (req, res, next) => {
     if (req.user.role === 'artist') {
         res.render('home/profile-set')
     } else {
         res.render('home/home-hunter')
     }
 };
+*/
+
 
 
 
 module.exports.updateArtist = (req, res, next) => {
-  res.render('home/profile-set')
+  const { image, description, age, height } = req.body
+
+    console.log(req.body)
+
+   if (req.user.role === 'Artist' && image && description && age && height) { // si es artist && no tiene ciertos campos, entonces entra. Si no, home.
+    console.log('he pasado por profile set')
+    res.render('/home/home-artist')
+    } else if (req.user.role === 'Artist') {
+        res.render('/home/profile-set')
+    } else {
+        res.render('/home')
+    }
 };
 
 module.exports.doUpdateArtist = (req, res, next) => {
+ /*if(req.body.imagen === ' ') {
+    req.body.image === User.schema.obj.image.default
+  }*/
 
-      User.findByIdAndUpdate(req.user.id, req.body)
+      User.findByIdAndUpdate(req.user.id, req.body, {//req.file.image
+        new: true,
+      })
       .then(() => {
-        
+       
           res.redirect('/home')
       })
-      .catch(nex)
+      .catch((err) => console.log(err))
 };
  
 

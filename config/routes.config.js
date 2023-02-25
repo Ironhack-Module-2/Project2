@@ -5,6 +5,7 @@ const createController = require("../controllers/create.controller");
 const appController = require("../controllers/application.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const roleMiddleware = require("../middlewares/role.middleware");
+const registerMiddleware = require("../middlewares/register.middleware");
 
 
 const upload = require('../config/cloudinary.config');
@@ -14,8 +15,7 @@ const upload = require('../config/cloudinary.config');
 router.get("/", (req, res, next) => res.render("home"));
 
 router.get("/signup", authMiddleware.isNotAuthenticated, authController.signup);
-router.post(
-  "/signup", authMiddleware.isNotAuthenticated, authController.doSignup);
+router.post("/signup", authMiddleware.isNotAuthenticated, authController.doSignup);
 
 router.get("/login", authMiddleware.isNotAuthenticated, authController.login);
 router.post("/login", authMiddleware.isNotAuthenticated, authController.doLogin
@@ -40,7 +40,7 @@ router.post("/jobs/:id/application", authMiddleware.isAuthenticated, appControll
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
 
 router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.updateArtist);
-router.post( "/profile-set", authMiddleware.isAuthenticated, roleController.doUpdateArtist);
+router.post( "/profile-set", authMiddleware.isAuthenticated, upload.single('image'), roleController.doUpdateArtist);
 
 router.get("/home-artist", authMiddleware.isAuthenticated, roleController.homeArtist);
 
