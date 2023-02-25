@@ -63,11 +63,17 @@ router.get(
   authMiddleware.isAuthenticated,
   profileController.detail
 );
-// router.post("/profile/:id/message", authMiddleware.isAuthenticated, profileController.message);
+
 router.post(
   "/profile/:id/:appId/message",
   authMiddleware.isAuthenticated,
   profileController.message
+);
+
+router.post(
+  "/profile/:id/:appId/confirm",
+  authMiddleware.isAuthenticated,
+  profileController.confirm
 );
 
 //router.get("/perfil", verficarUser, perfilForm);

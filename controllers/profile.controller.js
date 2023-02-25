@@ -18,10 +18,12 @@ module.exports.isArtist = (req, res, next) => {
 module.exports.detail = (req, res) => {
   const userId = req.params.id;
   const appId = req.params.appId;
+
   User.findById(userId)
-    //.populate( 'user')
     .then((user) => {
-      res.render("hunter-views/artist-detail", { user, appId });
+      return Application.findById(appId).then((app) => {
+        res.render("hunter-views/artist-detail", { user, app });
+      });
     })
     .catch((err) => res.send(err));
 };
@@ -45,4 +47,14 @@ module.exports.message = (req, res) => {
 
 module.exports.messageSent = (req, res, next) => {
   res.render("misc/confirmation");
+};
+
+module.exports.confirm = (req, res) => {
+  const { id, appId } = req.params;
+
+  Application.findByIdAndUpdate(appId, { status: "Casting Confirmed" })
+    .then(() => {
+      res.redirect(`/profile/${id}/${appId}/detail`);
+    })
+    .catch((err) => res.send(err));
 };
