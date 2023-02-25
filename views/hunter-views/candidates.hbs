@@ -3,13 +3,13 @@
     <div class="col-md-6 offset-md-3">
       <h4 style="margin-left: 1.2rem;">List of candidates</h4>
       <div class="candidates-3">
-        {{#each user as |user|}}
-          <h2>{{user.firstName}}</h2>
-          <p>{{user.lastName}}</p>
-          <p>{{user.age}}</p>
-          <p>{{user.height}}</p>
-          <p>{{user.description}}</p>
-          <p>{{user.imagen}}</p>
+        {{#each candidates as |candidate|}}
+          <h2>{{candidate.firstName}}</h2>
+          <p>{{candidate.lastName}}</p>
+          <p>{{candidate.age}}</p>
+          <p>{{candidate.height}}</p>
+          <p>{{candidate.description}}</p>
+          <p>{{candidate.imagen}}</p>
         {{/each}}
       </div>
     </div>

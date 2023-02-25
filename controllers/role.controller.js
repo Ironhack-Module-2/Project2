@@ -50,7 +50,7 @@ module.exports.doUpdateArtist = (req, res, next) => {
         
           res.redirect('/home')
       })
-      .catch(nex)
+      .catch(next)
 };
  
 
@@ -68,7 +68,7 @@ module.exports.homeArtist = (req, res, next) => {
 
 module.exports.candidatesList = (req, res, next) => {
   console.log(req.user);
-  User.find()
+  User.find({ role: "artist" })
     .then((candidates) => {
       res.render("hunter-views/candidates", { candidates });
     })

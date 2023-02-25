@@ -52,6 +52,7 @@ router.get("/candidates", authMiddleware.isAuthenticated, roleMiddleware.isHunte
 
 router.get('/home-artist', async (req, res) => {
   const jobs = await Job.find().populate('owner');
+  
   hbs.registerHelper('elapsedTime', function (publicationDate) {
     // función elapsedTime aquí
   });
