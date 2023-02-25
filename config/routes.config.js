@@ -6,6 +6,9 @@ const appController = require("../controllers/application.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const roleMiddleware = require("../middlewares/role.middleware");
 
+
+const upload = require('../config/cloudinary.config');
+
 //const roleMiddleware = require('../middlewares/role.middleware');
 
 router.get("/", (req, res, next) => res.render("home"));
@@ -28,18 +31,17 @@ router.post("/create", authMiddleware.isAuthenticated, createController.doCreate
 
 router.post("/jobs/:id/application", authMiddleware.isAuthenticated, appController.createApp);
 
-
-router.post('/jobs/:id/application', authMiddleware.isAuthenticated, appController.createApp);
-
-
-
-router.get("/home", authMiddleware.isAuthenticated, roleController.artist);
+//router.get("/home", authMiddleware.isAuthenticated, roleController.artist);
+//....
+//router.post("/home",authMiddleware.isAuthenticated,upload.single('image'), roleController.artist)
 
 
 //router.get("/perfil", verficarUser, perfilForm);
 //router.post("/perfil", verficarUser, cambiarFotoPerfil);
 
-//router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.profile);
+router.get( "/profile-set", authMiddleware.isAuthenticated, roleController.updateArtist);
+router.post( "/profile-set", authMiddleware.isAuthenticated, roleController.doUpdateArtist);
+
 router.get("/home-artist", authMiddleware.isAuthenticated, roleController.homeArtist);
 
 

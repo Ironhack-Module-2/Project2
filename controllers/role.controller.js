@@ -37,6 +37,25 @@ module.exports.artist= (req, res, next) => {
     }
 };
 
+
+
+module.exports.updateArtist = (req, res, next) => {
+  res.render('home/profile-set')
+};
+
+module.exports.doUpdateArtist = (req, res, next) => {
+
+      User.findByIdAndUpdate(req.user.id, req.body)
+      .then(() => {
+        
+          res.redirect('/home')
+      })
+      .catch(nex)
+};
+ 
+
+
+
 module.exports.homeArtist = (req, res, next) => {
   Job.find()
     .populate('owner')
