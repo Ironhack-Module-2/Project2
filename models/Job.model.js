@@ -17,23 +17,23 @@ const AGE = [
   "+80",
 ];
 const GENRE = [
-  "Action",
-  "Adventure",
-  "Animation",
-  "Comedy",
-  "Crime",
-  "Documentary",
-  "Drama",
-  "Family",
-  "Fantasy",
-  "Horror",
-  "Music",
-  "Mystery",
-  "Romance",
-  "Science fiction",
-  "Thriller",
-  "War",
-  "Western",
+  "action",
+  "adventure",
+  "animation",
+  "comedy",
+  "crime",
+  "documentary",
+  "drama",
+  "family",
+  "fantasy",
+  "horror",
+  "music",
+  "mystery",
+  "romance",
+  "science fiction",
+  "thriller",
+  "war",
+  "western",
 ];
 
 const jobSchema = new mongoose.Schema(
@@ -55,26 +55,15 @@ const jobSchema = new mongoose.Schema(
         validator: (gender) => GENDER.includes(gender),
         message: "Invalid gender",
       },
-      enum: GENDER,
     },
 
     minAge: {
       type: Number,
       required: [true, "minAge is required"],
-      validate: {
-        validator: (minAge) => AGE.includes(`${minAge} -`),
-        message: "Invalid minAge",
-      },
-      enum: AGE,
     },
     maxAge: {
       type: Number,
       required: [true, "maxAge is required"],
-      validate: {
-        validator: (maxAge) => AGE.includes(`- ${maxAge}`),
-        message: "Invalid maxAge",
-      },
-      enum: AGE,
     },
     height: {
       type: String,
@@ -97,9 +86,10 @@ const jobSchema = new mongoose.Schema(
     },
 
     genre: {
-            type: String,
-             enum: GENRE,
-          },
+      type: String,
+      enum: GENRE,
+      default: "Action",
+    },
 
     publicationDate: {
       type: Date,
