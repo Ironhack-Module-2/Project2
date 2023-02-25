@@ -11,7 +11,6 @@ module.exports.doCreate = (req, res, next) => {
     ...req.body, 
     owner: req.user.id
    }
-   console.log('********* ', newJob)
    
    Job.create(newJob)
    .then(job => {

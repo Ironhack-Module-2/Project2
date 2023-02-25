@@ -1,19 +1,33 @@
-<h1>Log In</h1>
 
-<form action="/login" method="POST">
-  <div class="mb-3" style="margin-top: 32px;">
-    <label for="email" class="form-label">Email</label>
-    <input value="{{user.email}}" type="email" class="form-control" placeholder="name@example.com" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" {{#if errorMessage}}is-invalid{{/if}} id="email" name="email" aria-describedby="emailHelp" required>
-    <div class="invalid-feedback">
-      {{errorMessage}}
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="password" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" required>
-  </div>
-  <div style="margin-top:32px">
-    <button type="submit" class="btn btn-primary">Log In</button>
-  </div>
-  
-</form>
+<div class="container">
+      <div class="row">
+        <div class="col">
+
+            <h1>Login</h1>
+
+            <form action="/login" method="POST">
+              <div class="mb-3" style="margin-top: 32px;">
+                <label for="email" class="form-label">Email</label>
+                <input value="{{user.email}}" type="email" class="form-control" placeholder="name@example.com" style="background-color:#FAFAFF; border-color:#30343F; border-radius:px" {{#if errorMessage}}is-invalid{{/if}} id="email" name="email" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">
+                  {{errorMessage}}
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" style="background-color:#FAFAFF; border-color:#30343F; border-radius:4px" required>
+              </div>
+              <div style="margin-top:32px">
+                <button type="submit" class="btn btn-primary">Log In</button>
+              </div>
+              
+            </form>
+        </div>
+      
+
+        <div class="col">
+          <img src="/images/image-login.png" style="height:500px">
+        </div>
+      </div>
+</div>
+

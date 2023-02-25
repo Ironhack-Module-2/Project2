@@ -6,6 +6,8 @@ const logger = require('morgan');
 const createError = require('http-errors');
 const passport = require('passport');
 
+const nodemailer = require('nodemailer')
+
 const app = express();
 
 app.use(logger('dev'));

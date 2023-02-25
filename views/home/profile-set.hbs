@@ -1,38 +1,51 @@
 <h2>PROFILE</h2>
 <div class="row">
   <div class="col-md-6">
-    <form action="/profile-set" method="POST" enctype="multipart/formn-data">
-    <div class="form-group">
+    <form action="/profile-set" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
         <label for="image-input">Image:</label>
-        <input type="file" name="image" id="image-input" class="form-control-file" />
-        <input type="text" name="existingImage" hidden id="">
+        <input
+          type="file"
+          name="image"
+          id="image-input"
+          class="form-control-file"
+          required
+        />
+        <input type="text" name="existingImage" hidden id="" />
       </div>
 
-       <div class="form-group">
-            <label for="description-input">Description:</label>
-            <textarea name="description" id="description-input" cols="30" rows="4" class="form-control"> </textarea>
-       </div>
-       <div class="form-group">
-        <label for="title-input">firstName</label>
-        <input type="text" name="firstName" id="firstName" class="form-control" />
+      <div class="form-group">
+        <label for="description-input">Description:</label>
+        <textarea
+          name="description"
+          id="description-input"
+          cols="30"
+          rows="4"
+          class="form-control"
+          required
+        > </textarea>
       </div>
 
       <div class="col-md-6">
-            <label for="" class="form-label">Age</label>
-            <input type="age" class="form-control" id="age"  name="age">
+        <label for="" class="form-label">Age</label>
+        <input type="age" class="form-control" id="age" name="age" required />
 
-        </div>
+      </div>
 
-        <div class="mb-3">
-            <label for="height"  class="form-label">Height Range</label>
-                <select class="form-select" aria-label="Default select role" name="height" >
-                    <option selected>select height range</option>
-                    <option value='1.40 - 1.60'>1.40 - 1.60</option>
-                    <option value='1.61 - 1.80'>1.61 - 1.80</option>
-                    <option value='+1.80'>+1.80</option>
-                </select>
-        </div>
-
+      <div class="mb-3">
+        <label for="height" class="form-label">Height Range</label>
+        <select
+          class="form-select"
+          aria-label="Default select role"
+          name="height"
+          required
+        >
+          <option selected>select height range</option>
+          <option value="1.40 - 1.60">1.40 - 1.60</option>
+          <option value="1.61 - 1.80">1.61 - 1.80</option>
+          <option value="+1.80">+1.80</option>
+        </select>
+      </div>
 
       <button>Update profile</button>
     </form>
