@@ -1,28 +1,11 @@
-{{!-- <div class="container my-5">
-  <div class="row">
-    
-      <h1>Open Candidatures</h1>
-      <div class="home-artist-3">
 
-         {{#each jobs as |job|}}
-          {{> jobcard job=job currentUser=../currentUser}}
-          {{!-- <form method="POST" action="/jobs/{{job.id}}/application">
-            <button type="button" class="btn btn-primary">Apply</button>
-            <button class="link">Apply</button> {{! helper para que cambie a "applied"? }}
-          </form> --}}
-        {{!-- {{/each}}
-     
-    </div>
-  </div>
-</div> --}} 
-
-
-<div >
   <section class="border-bottom-0 border-top-0 w-100 p-4">
-      <h1>Be casted in...</h1>
+      <h1>
+        <strong>Be casted in...</strong>
+      </h1>
       <div class="row">
         {{#each jobs as |job|}}
-          <div class="col-md-3">
+          <div class= "card profile-card-3">
             <div class="d-flex gap-3">
               {{> jobcard job=job currentUser=../currentUser}}
             </div>
@@ -30,4 +13,3 @@
         {{/each}}
       </div>
   </section>
-</div>

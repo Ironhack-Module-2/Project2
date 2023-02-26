@@ -44,6 +44,22 @@ router.post(
   createController.doCreate
 );
 
+router.post('/jobs/:id/delete', 
+authMiddleware.isAuthenticated, 
+createController.delete)
+
+router.get('/jobs/:id/edit', 
+authMiddleware.isAuthenticated,
+createController.edit
+);
+
+router.post('/jobs/:id/edit',
+authMiddleware.isAuthenticated,
+createController.doEdit
+);
+
+
+
 router.post(
   "/jobs/:id/application",
   authMiddleware.isAuthenticated,
@@ -87,7 +103,6 @@ router.get(
 
 router.post(
   "/profile-set",
-  authMiddleware.isAuthenticated,
   upload.single("image"),
   roleController.doUpdateArtist
 );

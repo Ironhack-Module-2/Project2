@@ -10,7 +10,7 @@ module.exports.isArtist = (req, res, next) => {
   if (req.user.role === "Artist") {
     next();
   } else {
-    res.redirect("/");
+    res.redirect("/profile-set");
   }
 };
 
