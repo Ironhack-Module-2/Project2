@@ -50,6 +50,24 @@ router.post(
   createController.delete
 );
 
+router.get(
+  "/jobs/:id/edit",
+  authMiddleware.isAuthenticated,
+  createController.edit
+);
+
+router.post(
+  "/jobs/:id/edit",
+  authMiddleware.isAuthenticated,
+  createController.doEdit
+);
+
+router.post(
+  "/profile/:id/:appId/deleteapp",
+  authMiddleware.isAuthenticated,
+  appController.delete
+);
+
 router.post(
   "/jobs/:id/application",
   authMiddleware.isAuthenticated,

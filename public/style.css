@@ -43,7 +43,23 @@ main {
 }
 
 .btn-primary:hover {
-  background-color: #fc5356;
+  background-color: #7947FA;
+  color:#f5f5f5;
+  border-color:#7947FA;
+}
+
+.btn-outline-danger {
+  background-color: white;
+  color: #fc5356;
+  border: none;
+  /* border: #fc5356 1px solid; */
+  font-size: 16px;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 8px;
+  padding-left: 8px;
+
 }
 
 .h1, h1 {

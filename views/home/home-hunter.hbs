@@ -1,6 +1,7 @@
 
 <div> 
   <h1 class="d-flex gap-3 align-center">You're looking for...</h1>
+    <h3>Your posted jobs ({{jobs.length}})</h3>
 
 {{!-- <div class="card text-center">
   {{#each jobs as |job|}}
@@ -58,8 +59,8 @@
           {{/each}}
       </section>
 
-      <form class="text-end" style="margin-top:100px"> {{! poner el botón a la derecha abajo}}
-          <a class="btn " href="/create" method="GET" action="/create">
+      <form class="text-end" style="margin-top:20px; margin-bottom:50px"> {{! poner el botón a la derecha abajo}}
+          <a class="btn btn-primary" href="/create" method="GET" action="/create">
             Create new job
           </a>
       </form>
