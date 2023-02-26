@@ -50,7 +50,7 @@ module.exports.doUpdateArtist = (req, res, next) => {
     description: req.body.description,
     age: req.body.age,
     height: req.body.height,
-    gender: req.user.gender,
+    gender: req.body.gender,
     image: req.file.path,
   };
 

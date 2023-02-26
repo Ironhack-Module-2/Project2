@@ -5,11 +5,11 @@
   <div>
     <div
       class="card"
-      style="margin-bottom:24px; height: 100%; background-color:white; padding-left:24px; border:none; border-radius:6px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+      style="margin-bottom:24px; height:fit-content; background-color:white; padding:24px; border:none; border-radius:6px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
     >
       <div class="card-body">
         <img
-          style="width:150px; border-color:white;"
+          style="width:150px; border-color:white; margin-bottom:16px"
           src="{{user.image}}"
           class="rounded-circle me-2"
           alt="..."
@@ -22,7 +22,7 @@
           <p>Height: {{user.height}}</p>
           <p>Gender: {{user.gender}}</p>
         </container>
-        <div style="margin-top:16px; width:80%">
+        <div style="margin-top:16px;">
           <h3>Bio</h3>
           <p>{{user.description}}</p>
         </div>
