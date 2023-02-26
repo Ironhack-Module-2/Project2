@@ -1,52 +1,56 @@
-<div class="container">
+<div class="container" style="margin:0%; padding:0%;" >
       <div class="row">
-        <div class="col">
+        <div class="col-5">
+          <div class="card">
+            <div class="card-body" style="padding-left: 50px; padding-right: 50px; padding-top:40px; padding-bottom:50px; background-color:white; border:none; border-radius:6px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
 
-            <h1 class="'text-primary">Sign Up</h1>
+              <h1 class="'text-primary">Sign Up</h1>
 
-            <form action="/signup" method="POST">
-              <div class="signup-names d-flex gap-3" style="margin-top: 32px;">
+              <form action="/signup" method="POST">
+                <div class="signup-names d-flex gap-3" style="margin-top: 32px;">
+                  <div class="mb-3">
+                      <label for="firstName" class="form-label">Name</label>
+                      <input class="form-control {{#if errors.firstName}}is-invalid{{/if}}" id="firstName" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:100%" name="firstName" value:"{{user.firstName}}" placeholder="Name">
+                      {{errors.firstName}}
+                  </div>
+                  <div class="mb-3">
+                      <label for="lastName" class="form-label">Last Name</label>
+                      <input class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:100%" name="lastName" value:"{{user.lastName}}" placeholder="Last Name">
+                      {{errors.lastName}}
+                  </div>  
+                </div>
+                  
                 <div class="mb-3">
-                    <label for="firstName" class="form-label">Name</label>
-                    <input class="form-control {{#if errors.firstName}}is-invalid{{/if}}" id="firstName" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:225px" name="firstName" value:"{{user.firstName}}" placeholder="Name">
-                    {{errors.firstName}}
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:100%" aria-describedby="emailHelp" value="{{user.email}}" name="email" placeholder="name@example.com">
+                  <div id="emailHelp" class="form-text"></div>
+                  {{errors.email}}
                 </div>
                 <div class="mb-3">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:225px" name="lastName" value:"{{user.lastName}}" placeholder="Last Name">
-                    {{errors.lastName}}
-                </div>  
-              </div>
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:100%" value:"{{user.password}}" name="password">
+                  {{errors.password}}
+                </div>
+                <div class="mb-3">
+                  <label for="role" class="form-label">Role</label>
+                  <select class="form-select {{#if errors.role}}is-invalid{{/if}}" aria-label="Default select role" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px; width:100%" name="role">
+                      <option value="artist">Artist</option>
+                      <option value="hunter">Hunter</option>
+                  </select>
+                  {{errors.role}}
+                </div>
+                <div style="margin-top:32px">
+                  <button type="submit" class="btn btn-primary">Create account</button>
+                </div>
                 
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" aria-describedby="emailHelp" value="{{user.email}}" name="email" placeholder="name@example.com">
-                <div id="emailHelp" class="form-text"></div>
-                {{errors.email}}
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" value:"{{user.password}}" name="password">
-                {{errors.password}}
-              </div>
-              <div class="mb-3">
-                <label for="role" class="form-label">Role</label>
-                <select class="form-select {{#if errors.role}}is-invalid{{/if}}" aria-label="Default select role" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" name="role">
-                    <option value="artist">Artist</option>
-                    <option value="hunter">Hunter</option>
-                </select>
-                {{errors.role}}
-              </div>
-              <div style="margin-top:32px">
-                <button type="submit" class="btn btn-primary">Create account</button>
-              </div>
+              </form>
               
-            </form>
-          
+            </div>
+          </div>
         </div>
-      
-      <div class="col">
-          <img src="/images/image-signup.png" style="height:500px">
+        <div class="col text-center">
+          <img src="/images/image-signup.png" style="height:80%; margin-top:32px">
         </div>
       </div>
+      
 </div>

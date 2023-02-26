@@ -21,3 +21,11 @@ module.exports.doCreate = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+module.exports.delete = (req, res, next) => {
+  Job.findByIdAndDelete(req.params.id)
+    .then((job) => {
+      res.redirect("/home");
+    })
+    .catch((err) => console.log(err));
+};

@@ -11,6 +11,7 @@
 main {
   /* margin: 80px !important; */
   padding-top: 100px !important;
+  min-height: 100%;
 }
 
 .body {
@@ -23,6 +24,8 @@ main {
   font-weight: 400;
   padding-top: 8px;
   height: 50px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -37,6 +40,10 @@ main {
   padding-bottom: 8px;
   padding-right: 24px;
   padding-left: 24px;
+}
+
+.btn-primary:hover {
+  background-color: #fc5356;
 }
 
 .h1, h1 {

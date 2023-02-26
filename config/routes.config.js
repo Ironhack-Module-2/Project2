@@ -45,6 +45,12 @@ router.post(
 );
 
 router.post(
+  "/jobs/:id/delete",
+  authMiddleware.isAuthenticated,
+  createController.delete
+);
+
+router.post(
   "/jobs/:id/application",
   authMiddleware.isAuthenticated,
   appController.createApp
