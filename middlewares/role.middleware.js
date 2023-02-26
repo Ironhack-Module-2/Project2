@@ -7,14 +7,6 @@ module.exports.isHunter = (req, res, next) => {
 };
 
 module.exports.isArtist = (req, res, next) => {
-  if (req.user.role === "Artist") {
-    next();
-  } else {
-    res.redirect("/profile-set");
-  }
-};
-
-module.exports.isArtist = (req, res, next) => {
   if (req.user.role === "artist") {
     next();
   } else {
@@ -31,6 +23,7 @@ module.exports.isFullfilled = (req, res, next) => {
       req.user.age) ||
     req.user.role === "hunter"
   ) {
+    console.log("hola");
     next();
   } else {
     res.redirect("/profile-set");

@@ -36,6 +36,7 @@ module.exports.message = (req, res) => {
 
   console.log("********* ", subject, message, email, appId);
 
+  // PRUEBA AQUÍ
   sendMail(email, subject, message); //puedo aquí pasar el estado de not contacted a contacted?
 
   Application.findByIdAndUpdate(appId, { status: "Contacted" })

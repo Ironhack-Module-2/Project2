@@ -1,15 +1,19 @@
-
+<div>
   <section class="border-bottom-0 border-top-0 w-100 p-4">
-      <h1>
-        <strong>Be casted in...</strong>
-      </h1>
-      <div class="row">
-        {{#each jobs as |job|}}
-          <div class= "card profile-card-3">
-            <div class="d-flex gap-3">
-              {{> jobcard job=job currentUser=../currentUser}}
-            </div>
-          </div>
-        {{/each}}
-      </div>
+      <h1>Be casted in...</h1>
+
+    <div class="container">
+      <h3>Open positions ({{jobs.length}})</h3>
+        <div class="row">
+          {{#each jobs as |job|}}
+              <div class="col">
+                
+                  {{> jobcard job=job currentUser=../currentUser}}
+                  
+              </div>
+          {{/each}}  
+        </div>
+    </div>
   </section>
+    
+</div>    
