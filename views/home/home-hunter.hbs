@@ -1,25 +1,29 @@
-<div> {{!-- flex pero en columna --}}
-  <h1 class="border-bottom w-100 p-2">You're looking for...</h1>
-  <section class="border-bottom-0 border-top-0 w-100 p-4">
-      {{#each jobs as |job|}}
-        {{#isOwner currentUser=../currentUser jobOwnerId=job.owner._id}}
-              {{> jobposted job=job currentUser=../currentUser}}
-      
-          {{/isOwner}}
-      {{else}}
-        <div>
-          <h1>You have no jobs posted yet</h1>
-        </div>
-      {{/each}}
-    </section>
 
-    <form> {{! poner el botón a la derecha abajo}}
-        <a class="btn" href="/create" method="GET" action="/create">
-          Create new job
-        </a>
-    </form>
+<div> {{!-- flex pero en columna --}}
+  <h1 class="d-flex gap-3 align-center">You're looking for...</h1>
+  <div class="d-flex gap-3 align-center">
+    <div class="col align-center">
+      <section class="border-bottom-0 border-top-0 w-100 p-4">
+          {{#each jobs as |job|}}
+            {{#isOwner currentUser=../currentUser jobOwnerId=job.owner._id}}
+                  {{> jobposted job=job currentUser=../currentUser}}
+          
+              {{/isOwner}}
+          {{else}}
+            <div>
+              <h1>You have no jobs posted yet</h1>
+            </div>
+          {{/each}}
+      </section>
+
+      <form class="text-end" style="margin-top:100px"> {{! poner el botón a la derecha abajo}}
+          <a class="btn " href="/create" method="GET" action="/create">
+            Create new job
+          </a>
+      </form>
+    </div>
+  </div>
 </div>
  
  
-
 

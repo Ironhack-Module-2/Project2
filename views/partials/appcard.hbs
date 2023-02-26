@@ -1,13 +1,44 @@
 {{!--           {{#each apps=job.apps apps as |app|}} --}}
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 500px; height:100%; border:none; border-radius:4px; background-color:white; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and
-      make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">{{app.status}}</a>
+    {{#hasContact user=user app=app }}
+            <h2 class="card-subtitle mb-2 text-muted">Status</h2>
+            <h6 style="color: #FC5661; font-weight:600">{{app.status}}</h6>
+            <p class="card-text">Send {{user.firstName}} an email</p>
+            <form action="/profile/{{user.id}}/{{app.id}}/message" method="POST">
+                <div class="mb-3" style="margin-top: 32px;">
+                    <label for="email" class="form-label">Email</label>
+                    <input readonly value="{{user.email}}" type="text" class="form-control" placeholder="name@example.com" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" {{#if errorMessage}}is-invalid{{/if}} id="email" name="email" aria-describedby="emailHelp" required>
+                    <div class="invalid-feedback">
+                    {{errorMessage}}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control form-control" id="description" rows="3" typeof="text" name="message" style="background-color:#FAFAFF; border-color:#6C6F77; border-radius:2px" required></textarea>
+                </div>
+                <div style="margin-top:32px">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+            </form>
+            {{/hasContact}}
+
+            {{#hasCasting app=app }}
+            {{! Para cambiar el status, uso JS o hago un post?}}
+                <h2 class="card-subtitle mb-2 text-muted">Status</h2>
+                <h6 style="color:#DC965A; font-weight:600">{{app.status}}</h6>
+                <p class="card-text">¿Has {{user.firstName}} confirmed casting?</p>
+                <form action="/profile/{{user.id}}/{{app.id}}/confirm" method="POST">
+                    <button type="submit" class="btn btn-primary">Confirm Casting</button>
+                </form>
+            {{/hasCasting}}
   </div>
+  
 </div>
 
 {{!--    {{/each}} --}}

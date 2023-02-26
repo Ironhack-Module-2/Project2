@@ -1,36 +1,72 @@
+<nav
+  class="navbar navbar-expand-lg fixed-top"
+  style="background-color: #30343F;"
+  id="navbar"
+>
+  <div
+    class="collapse navbar-collapse" id="navbarSupportedContent"
+    style="margin-left: 24px; margin-right:24px; margin-top:16px;"
+  >
 
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #30343F;" id="navbar">
-  <div class="container-fluid" style="margin-left: 24px; margin-right:24px; margin-top:16px;">
+    <a class="navbar-brand" href="/home">
+      <img src="/images/logo-white.png" height="40px" />
+    </a>
     
-      <a class="navbar-brand" href="./home">
-        <img src="/images/logo-white.png" height="40px">
-      </a>
+      {{#if currentUser}}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="nav-link"
+              aria-current="page"
+              style="color:#FAFAFF; font-weight:600"
+              href="/profile"
+            >Profile</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="nav-link"
+              aria-current="page"
+              style="color:#FAFAFF; font-weight:600"
+              href="/candidates"
+            >Artists</a>
+          </li>
+          </ul>
         <div class="d-flex">
-          {{#if currentUser}}
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" id="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/logout">Log out</a>
-                </li>
-              </ul>
-        
-              {{else}}
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/signup">Sign up</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" style="color:#FAFAFF; font-weight:600" href="/login">Log in</a>
-                </li>
-              </ul>
-          {{/if}}
+            <a
+              class="nav-link"
+              id="nav-link"
+              aria-current="page"
+              style="color:#FAFAFF; font-weight:600"
+              href="/logout"
+            >Log out</a>
+    
         </div>
-      
-      </div>
-   
-   
-</nav>
+        
 
+      {{else}}
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              aria-current="page"
+              style="color:#FAFAFF; font-weight:600"
+              href="/signup"
+            >Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              aria-current="page"
+              style="color:#FAFAFF; font-weight:600"
+              href="/login"
+            >Log in</a>
+          </li>
+        </ul>
+      {{/if}}
+    </div>
+
+  </div>
+
+</nav>

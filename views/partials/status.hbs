@@ -8,14 +8,27 @@
       Not contacted
       {{#each apps as |app|}}
         {{#hasContact app=app status=status}}
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a href="/profile/{{this.applicant.id}}/{{this._id}}/detail">
-                {{this.applicant.firstName}}
-                {{this.applicant.lastName}}
-              </a>
-            </li>
-          </ul>
+          <div style="d-flex align-center">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <img
+                  style="width:50px;"
+                  src="{{this.applicant.image}}"
+                  class="rounded-circle me-2"
+                  alt="..."
+                />
+                <a
+                  href="/profile/{{this.applicant.id}}/{{this._id}}/detail"
+                  class="h4"
+                  style="text-decoration:none; color:#30343F; font-weight:300; font-size:20px"
+                >
+                  {{this.applicant.firstName}}
+                  {{this.applicant.lastName}}
+                </a>
+              </li>
+            </ul>
+          </div>
+
         {{else}}
 
         {{/hasContact}}
@@ -32,7 +45,16 @@
         {{#hasCasting app=app}}
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <a href="/profile/{{this.applicant.id}}/{{this._id}}/detail">
+              <img
+                style="width:50px;"
+                src="{{this.applicant.image}}"
+                class="rounded-circle me-2"
+                alt="..."
+              />
+              <a
+                style="text-decoration:none; color:#30343F; font-weight:300; font-size:20px"
+                href="/profile/{{this.applicant.id}}/{{this._id}}/detail"
+              >
                 {{this.applicant.firstName}}
                 {{this.applicant.lastName}}
               </a>
@@ -46,7 +68,7 @@
     <div
       class="col"
       id="pending"
-      style="color:#00C49A; font-weight:700; font-size:18px;"
+      style="color:#00C49A; font-weight:700; font-size:18px; text-decoration:none;"
     >
       {{! falta el helper, seguramente un botón que se habilite después del contacto}}
       Casting pending
@@ -54,7 +76,16 @@
         {{#hasConfirmed app=app}}
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <a href="/profile/{{this.applicant.id}}/{{this._id}}/detail">
+              <img
+                style="width:50px;"
+                src="{{this.applicant.image}}"
+                class="rounded-circle me-2"
+                alt="..."
+              />
+              <a
+                style="text-decoration:none; color:#30343F; font-weight:300; font-size:20px"
+                href="/profile/{{this.applicant.id}}/{{this._id}}/detail"
+              >
                 {{this.applicant.firstName}}
                 {{this.applicant.lastName}}
               </a>

@@ -1,23 +1,31 @@
-
-
-
-<div class="card" style="width: 20rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:#FAFAFF; border-radius:4px; border-color:#30343F">
+<div
+  class="card"
+  style="width: 20rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:#FAFAFF; border-radius:4px; border-color:#30343F"
+>
   <div class="card-body" style=" padding-right:px">
-    
-      <h2 class="card-title">{{job.title}}</h2>
-      {{!<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> AQUÍ LA DESCRIPCIÓN}}
-      <p class="card-text">{{job.description}}</p>
-      <p class="card-text">{{job.owner.companyName}}</p>
-      <p class="card-text">Gender: {{job.gender}}</p>
-      <p class="card-text">Age: {{job.minAge}} - {{job.maxAge}}</p>
-      <p class="card-text">Height: {{job.height}}</p>
-      <p class="card-text">Publised {{elapsedTime job.createdAt}} ago</p>
-      <form method="POST" action="/jobs/{{job.id}}/application" style="padding-top:16px">
-        {{#hasApplied currentUser=currentUser job=job}}
-           <button type="button" class="btn btn-primary">Applied</button>
-        {{else}}
-            <button type="submit" class="btn btn-outline-primary">Apply</button>
-        {{/hasApplied}}
-      </form> 
+
+    <h2 class="card-title">{{job.title}}</h2>
+    {{!<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> AQUÍ LA DESCRIPCIÓN}}
+    <p class="card-text">{{job.description}}</p>
+    <p class="card-text">{{job.owner.companyName}}</p>
+    <p class="card-text">Gender: {{job.gender}}</p>
+    <p class="card-text">Age: {{job.minAge}} - {{job.maxAge}}</p>
+    <p class="card-text">Height: {{job.height}}</p>
+    <p class="card-text">Publised {{elapsedTime job.createdAt}} ago</p>
+    <form
+      method="POST"
+      action="/jobs/{{job.id}}/application"
+      style="padding-top:16px"
+    >
+      {{#hasApplied currentUser=currentUser job=job}}
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="background-color:#7947FA; color:#f5f5f5"
+        >Applied</button>
+      {{else}}
+        <button type="submit" class="btn btn-outline-primary">Apply</button>
+      {{/hasApplied}}
+    </form>
   </div>
 </div>
