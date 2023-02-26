@@ -54,7 +54,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="height" class="form-label">Height range</label>
+      <label for="height" class="form-label" style="padding-top:16px">Height range</label>
       <select
         class="form-select"
         aria-label="Default select height"
@@ -116,6 +116,20 @@
       </select>
     </div>
   </div>
+
+  <div class="row">
+  <div class="col-md-6 mb-3">
+    <label for="location" class="form-label">Location</label>
+    <input typeof="text" class="form-control" id="location" name="location" value="{{job.location}}" required>
+  </div>
+
+  <div class|="row">
+  <div class="col-md-6 mb-3">
+    <label for="company" class="form-label">Company's Name</label>
+    <input typeof="text" class="form-control" id="company" name="companyName" value="{{job.companyName}}" required>
+  </div>
+</div>
+</div>
 
   <button type="submit" class="btn btn-primary">Post job</button>
 </form>

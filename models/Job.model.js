@@ -75,9 +75,9 @@ const jobSchema = new mongoose.Schema(
       enum: HEIGHT,
     },
 
-    skills: {
+    companyName: {
       type: String,
-      //required: [true, 'Skills are required'],
+      //required: [true, "Company's Name is required"],
     },
 
     location: {
