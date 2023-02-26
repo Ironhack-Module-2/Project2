@@ -1,6 +1,6 @@
-<h1>Create new job</h1>
+<h1>Update job</h1>
 
-<form action="/create" method="POST">
+<form action="/jobs/{{job.id}}/edit" method="POST">
   <div class="mb-3">
     <label for="title" class="form-label">Job title</label>
     <input
@@ -22,6 +22,7 @@
       typeof="text"
       name="description"
       value="{{job.description}}"
+      placeholder="{{job.description}}"
       required
     ></textarea>
   </div>
@@ -33,10 +34,10 @@
         class="form-select"
         aria-label="Default select age"
         name="range"
-        value="{{job.age}}"
+        value="{{job.range}}"
         required
       >
-        <option selected>Choose age range</option>
+        <option selected>{{job.minAge}} - {{job.maxAge}}</option>
         <option value="0 - 3">0 - 3</option>
         <option value="4 - 12">4 - 12</option>
         <option value="13 - 17">13 - 17</option>
@@ -62,7 +63,7 @@
         value="{{job.height}}"
         required
       >
-        <option selected>Choose height range</option>
+        <option selected>{{job.height}}</option>
         <option value="-1.40">Shorter than 1.40m</option>
         <option value="1.40 - 1.60">Between 1.40m and 1.60m</option>
         <option value="1.61 - 1.80">Between 1.61m and 1.80m</option>
@@ -79,7 +80,7 @@
         value="{{job.gender}}"
         required
       >
-        <option selected>Choose gender</option>
+        <option selected>{{job.gender}}</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="non-binary">Non-binary</option>
@@ -95,7 +96,7 @@
         value="{{job.genre}}"
         required
       >
-        <option selected>Choose genre</option>
+        <option selected>{{job.genre}}</option>
         <option selected value="action">Action</option>
         <option value="adventure">Adventure</option>
         <option value="animation">Animation</option>
@@ -117,5 +118,5 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Post job</button>
+  <button type="submit" class="btn btn-primary">Edit</button>
 </form>

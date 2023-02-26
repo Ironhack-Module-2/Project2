@@ -18,7 +18,7 @@ module.exports.home = (req, res, next) => {
       })
       .catch((err) => next(err));
   } else {
-    res.render("home/home-artist");
+    res.redirect("/home-artist");
   }
 };
 /* module.exports.isArtist = (req, res, next) => {
@@ -33,52 +33,49 @@ module.exports.artist = (req, res, next) => {
   }
 };
 
-module.exports.updateArtist = (req, res, next) => {
-  res.render("home/profile-set");
-};
-
-module.exports.doUpdateArtist = (req, res, next) => {
+/* module.exports.doUpdateArtist = (req, res, next) => {
   User.findByIdAndUpdate(req.user.id, req.body)
     .then(() => {
       res.redirect("/home");
     })
     .catch(next);
 };
-
+ */
 module.exports.updateArtist = (req, res, next) => {
   res.render("home/profile-set");
 };
 
 module.exports.doUpdateArtist = (req, res, next) => {
-  console.log(req.file?.path);
   const userUpdated = {
     description: req.body.description,
     age: req.body.age,
     height: req.body.height,
+    gender: req.body.gender,
     image: req.file.path,
   };
 
   User.findByIdAndUpdate(req.user.id, userUpdated)
     .then(() => {
-      res.redirect("/home");
+      res.redirect("/home-artist");
     })
     .catch(next);
 };
 
-module.exports.updateArtist = (req, res, next) => {
+/* module.exports.updateArtist = (req, res, next) => {
   res.render("home/profile-set");
-};
+}; */
 
-module.exports.doUpdateArtist = (req, res, next) => {
-  User.findByIdAndUpdate(req.user.id, req.body)
-    .then(() => {
-      res.redirect("/home");
-    })
-    .catch(nex);
-};
+// module.exports.doUpdateArtist = (req, res, next) => {
+//   User.findByIdAndUpdate(req.user.id, req.body)
+//     .then(() => {
+//       res.render("home/home-artist");
+//     })
+//     .catch(next);
+// };
 
 module.exports.homeArtist = (req, res, next) => {
   const { height, age, gender } = req.user;
+
   const criteria = {
     height,
     gender,
@@ -88,6 +85,7 @@ module.exports.homeArtist = (req, res, next) => {
   Job.find(criteria)
     .populate("owner")
     .then((jobs) => {
+      console.log(jobs);
       res.render("home/home-artist", { jobs });
     })
     .catch((err) => next(err));

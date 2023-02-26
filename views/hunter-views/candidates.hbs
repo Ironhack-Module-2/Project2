@@ -1,21 +1,27 @@
-<div class="container my-5">
+<div class="container">
+  <h1>Choose your best candidate</h1>
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <section class="border-bottom-0 border-top-0 w-100 p-4">
-        <h1>Choose your best candidate</h1>
-      </section>
-      <div class="candidates-3">
+    <div class="d-flex flex-row justify-content-between gap-4" style="margin-bottom:50px">
         {{#each candidates as |candidate|}}
-          <div class="card mb-3" style="width: 20rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:#FAFAFF; border-radius:4px; border-color:#30343F">
-            <img class="card-img-top" src="{{candidate.image}}" alt="{{candidate.firstName}}">
+          <div
+            class="card mb-3"
+            style="width: 30rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:white; padding-left:24px; border:none; border-radius:6px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+          >
+            <img
+              class="card-img-top"
+              src="{{candidate.image}}"
+              alt=""
+            />
             <div class="card-body" style="padding-right:0px">
-              <p class="card-text">Gender: {{candidate.gender}}</p>
-              <p class="card-text">Age: {{candidate.age}}</p>
-              <p class="card-text">Height: {{candidate.height}}</p>
-              <p class="card-text">{{candidate.description}}</p>
+              <h2>{{candidate.firstName}}, {{candidate.age}}</h2>
+              <div class="d-flex flex-column gap-0">
+                <p class="card-text">{{candidate.description}}</p>
+              </div>
             </div>
+              
           </div>
         {{/each}}
+   
       </div>
     </div>
   </div>
