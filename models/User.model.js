@@ -65,9 +65,15 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    
     owner: {
       type: mongoose.Types.ObjectId,
       ref: "User",
+    },
+
+    publicationDate: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

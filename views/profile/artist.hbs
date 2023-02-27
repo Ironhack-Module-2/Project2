@@ -1,2 +1,38 @@
-<h1>Artist Profile</h1>
+
+<div class="container">
+  <h1>Your Profile</h1>
+  <div class="row">
+    <div class="d-flex flex-row justify-content-between gap-4" style="margin-bottom:50px">
+
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-80">
+    <div class="col col-lg-6 mb-4 mb-lg-0">
+      <div class="card mb-3" style="border-radius: .5rem;">
+        <div class="row g-0">
+          <div class="col-md-4 gradient-custom text-center text-white"
+            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; overflow: hidden;">
+            <img src="{{currentUser.image}}"
+              alt="Avatar" class="img-fluid my-4" style="width: 100px; height: 100px; border-radius: 50%;" />
+            <i class="far fa-edit mb-5"></i>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body p-4">
+              <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+              <hr class="mt-0 mb-4">
+              <div class="row pt-1">
+                 <div class="col-60 mb-4">
+                  <h5>{{currentUser.description}}</h5>
+                </div>
+                   <div class="col-20 mb-4">
+                  <h7 class="text-muted">{{currentUser.email}}</h7>
+                </div>
+                <p class="text-muted">Profile created {{elapsedTime currentUser.createdAt}} ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

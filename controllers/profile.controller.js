@@ -5,7 +5,14 @@ const mongoose = require("mongoose");
 
 module.exports.isArtist = (req, res, next) => {
   if (req.user.role === "artist") {
+    User.findOne({ _id: req.user._id, role: "artist" })
+      .then((currentUsers) => {
+        if (!currentUsers) {
+          return res.status(404).send("No se pudo encontrar el usuario actual");
+        }
     res.render("profile/artist");
+  })
+  .catch((err) => next(err))
   } else {
     User.findOne({ _id: req.user._id, role: "hunter" })
       .then((currentUsers) => {
