@@ -1,28 +1,23 @@
-<div class="container">
+<div class="container-fluid p-5 pb-0 mb-5">
   <h1>Choose your best candidate</h1>
-  <div class="row">
-    <div class="d-flex flex-row justify-content-between gap-4" style="margin-bottom:50px">
-        {{#each candidates as |candidate|}}
+  <div class="container">
+    <div class="row gy-3 pb-3" style="margin-bottom:50px">
+      {{#each candidates as |candidate|}}
+        <div class="col">
           <div
             class="card mb-3"
-            style="width: 30rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:white; padding-left:24px; border:none; border-radius:6px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+            style="width: 20rem; margin-top:40px; padding-right:16px; padding-left:24px; padding-bottom:0px; padding-top:16px; background-color:white; padding-left:24px; border:none; border-radius:6px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; height:fit-content"
           >
-            <img
-              class="card-img-top"
-              src="{{candidate.image}}"
-              alt=""
-            />
+            <img class="card-img-top" src="{{candidate.image}}" alt="" />
             <div class="card-body" style="padding-right:0px">
               <h2>{{candidate.firstName}}, {{candidate.age}}</h2>
               <div class="d-flex flex-column gap-0">
                 <p class="card-text">{{candidate.description}}</p>
               </div>
             </div>
-              
           </div>
-        {{/each}}
-   
-      </div>
+        </div>
+      {{/each}}
     </div>
   </div>
 </div>

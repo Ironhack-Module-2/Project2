@@ -4,25 +4,27 @@
   id="navbar"
 >
   <div
-    class="collapse navbar-collapse" id="navbarSupportedContent"
+    class="collapse navbar-collapse d-flex justify-content-between"
+    id="navbarSupportedContent"
     style="margin-left: 50px; margin-right:50px; margin-top:16px;"
   >
 
     <a class="navbar-brand" href="/home">
       <img src="/images/logo-white.png" height="40px" />
     </a>
-    
-      {{#if currentUser}}
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              id="nav-link"
-              aria-current="page"
-              style="color:#FAFAFF; font-weight:600"
-              href="/profile"
-            >Profile</a>
-          </li>
+
+    {{#if currentUser}}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="nav-link"
+            aria-current="page"
+            style="color:#FAFAFF; font-weight:600"
+            href="/profile"
+          >Profile</a>
+        </li>
+        {{#isHunter currentUser=currentUser}}
           <li class="nav-item">
             <a
               class="nav-link"
@@ -32,21 +34,22 @@
               href="/candidates"
             >Artists</a>
           </li>
-          </ul>
-        <div class="d-flex">
-            <a
-              class="nav-link"
-              id="nav-link"
-              aria-current="page"
-              style="color:#FAFAFF; font-weight:600"
-              href="/logout"
-            >Log out</a>
-    
-        </div>
-        
+        {{else}}
+        {{/isHunter}}
+      </ul>
+      <div class="d-flex">
+        <a
+          class="nav-link"
+          id="nav-link"
+          aria-current="page"
+          style="color:#FAFAFF; font-weight:600"
+          href="/logout"
+        >Log out</a>
 
-      {{else}}
-        <ul class="navbar-nav d-flex">
+      </div>
+
+    {{else}}
+        <ul class="navbar-nav d-flex text-end">
           <li class="nav-item">
             <a
               class="nav-link"
@@ -64,10 +67,8 @@
             >Log in</a>
           </li>
         </ul>
-      
-      {{/if}}
-    </div>
-
+      </div>
+    {{/if}}
   </div>
 
 </nav>

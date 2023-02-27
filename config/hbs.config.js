@@ -14,16 +14,15 @@ hbs.registerHelper("isOwner", function (options) {
   }
 });
 
-/* hbs.registerHelper('isArtist', function (options) {
-    const { currentUser } = options.hash;
-  
-    if (currentUser.role !== 'Artist') {
-      return options.fn(this);
-    } else {
-      return options.inverse(this);
-    }
+hbs.registerHelper("isHunter", function (options) {
+  const { currentUser } = options.hash;
 
-  }) */
+  if (currentUser.role === "hunter") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 
 hbs.registerHelper("hasApplied", function (options) {
   const { currentUser, job } = options.hash;
