@@ -8,7 +8,7 @@ const GENDER = ["male", "female", "non-binary"];
 const HEIGHT = ["1.40 - 1.60", "1.61 - 1.80", "+1.80"];
 const EMAIL_PATTERN =
   /^(([^<>()[\]\\.,;:\s@“]+(\.[^<>()[\]\\.,;:\s@“]+)*)|(“.+“))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+const PASSWORD_PATEERN = "^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$";
 const userSchema = new mongoose.Schema(
   {
     firstName: {
@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+      match: PASSWORD_PATTERN,
       required: [true, "Password is required"],
     },
     role: {
@@ -65,7 +66,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
-    
+
     owner: {
       type: mongoose.Types.ObjectId,
       ref: "User",
