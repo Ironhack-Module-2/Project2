@@ -45,7 +45,6 @@ const jobSchema = new mongoose.Schema(
     description: {
       type: String,
       required: [true, "Description is required"],
-      maxLength: [400, "Description must have max 400 characters"],
     },
 
     gender: {
