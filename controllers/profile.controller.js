@@ -5,11 +5,38 @@ const mongoose = require("mongoose");
 
 module.exports.isArtist = (req, res, next) => {
   if (req.user.role === "artist") {
+    User.findOne({ _id: req.user._id, role: "artist" })
+      .then((currentUsers) => {
+        if (!currentUsers) {
+          return res.status(404).send("No se pudo encontrar el usuario actual");
+        }
     res.render("profile/artist");
+  })
+  .catch((err) => next(err))
   } else {
-    res.render("profile/hunter");
+    User.findOne({ _id: req.user._id, role: "hunter" })
+      .then((currentUsers) => {
+        if (!currentUsers) {
+          return res.status(404).send("No se pudo encontrar el usuario actual");
+        }
+        res.render("profile/hunter", { currentUsers });
+      })
+      .catch((err) => next(err));
   }
 };
+
+/*module.exports.isArtist = (req, res, next) => {
+  if (req.user.role === "artist") {
+    res.render("profile/artist");
+  } else {
+    User.find({ role: "hunter" })
+    .then((currentUser) => {
+      res.render("profile/hunter", { currentUser });
+    })
+    .catch((err) => next(err));
+   
+  }
+}; */
 
 /* module.exports.detail = (req, res, next) => {
         res.render('hunter-views/artist-detail')
